@@ -82,6 +82,7 @@
 		E4A29D5C2B1C66F900A3ED94 /* WeatherChaser */ = {
 			isa = PBXGroup;
 			children = (
+				E4A29D6B2B1C66FA00A3ED94 /* Info.plist */,
 				E4A29D792B1C6EDE00A3ED94 /* Screens */,
 				E4A29D712B1C6AD100A3ED94 /* Application */,
 				E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */,
@@ -95,7 +96,6 @@
 			children = (
 				E4A29D732B1C6BDF00A3ED94 /* Coordinators */,
 				E4A29D722B1C6BD400A3ED94 /* Protocols */,
-				E4A29D6B2B1C66FA00A3ED94 /* Info.plist */,
 				E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */,
 				E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */,
 			);
