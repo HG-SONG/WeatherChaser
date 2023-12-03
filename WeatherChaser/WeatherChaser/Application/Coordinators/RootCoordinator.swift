@@ -1,0 +1,29 @@
+//
+//  RootViewControllerCoordinator.swift
+//  WeatherChaser
+//
+//  Created by SONG on 2023/12/03.
+//
+
+import UIKit
+
+class RootCoordinator : Coordinator {
+    private var window : UIWindow?
+    private let rootViewController: UINavigationController
+    private let weatherListCoordinator : WeatherListCoordinator
+    
+    init(_ window: UIWindow) {
+        self.rootViewController = UINavigationController()
+        self.rootViewController.navigationBar.prefersLargeTitles = true
+        
+        self.window = window
+        self.weatherListCoordinator = WeatherListCoordinator(presenter: rootViewController)
+    }
+    
+    func changeViewController() {
+        window?.rootViewController = self.rootViewController
+        window?.makeKeyAndVisible()
+        self.weatherListCoordinator.changeViewController()
+    }
+
+}
