@@ -16,11 +16,14 @@
 		E4A29D782B1C6C6C00A3ED94 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D772B1C6C6C00A3ED94 /* RootCoordinator.swift */; };
 		E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D7B2B1C6F1800A3ED94 /* WeatherListTableViewController.swift */; };
 		E4A29D802B1C77E600A3ED94 /* WeatherListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D7F2B1C77E600A3ED94 /* WeatherListCoordinator.swift */; };
+		E4A29D832B1DC6AC00A3ED94 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D822B1DC6AC00A3ED94 /* WeatherListViewModel.swift */; };
 		E4A29D872B1E218600A3ED94 /* ButtonActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D862B1E218600A3ED94 /* ButtonActionDelegate.swift */; };
 		E4A29D8B2B1E231700A3ED94 /* AddCityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D8A2B1E231700A3ED94 /* AddCityCoordinator.swift */; };
 		E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D8D2B1E233400A3ED94 /* AddCityViewController.swift */; };
 		E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D922B1F0BF300A3ED94 /* SettingsTableViewController.swift */; };
 		E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */; };
+		E4A29D9A2B1F177A00A3ED94 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D992B1F177A00A3ED94 /* NetworkManager.swift */; };
+		E4A29D9C2B1F17A400A3ED94 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D9B2B1F17A400A3ED94 /* URLManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +40,14 @@
 		E4A29D772B1C6C6C00A3ED94 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		E4A29D7B2B1C6F1800A3ED94 /* WeatherListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewController.swift; sourceTree = "<group>"; };
 		E4A29D7F2B1C77E600A3ED94 /* WeatherListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCoordinator.swift; sourceTree = "<group>"; };
+		E4A29D822B1DC6AC00A3ED94 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
 		E4A29D862B1E218600A3ED94 /* ButtonActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActionDelegate.swift; sourceTree = "<group>"; };
 		E4A29D8A2B1E231700A3ED94 /* AddCityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCoordinator.swift; sourceTree = "<group>"; };
 		E4A29D8D2B1E233400A3ED94 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		E4A29D922B1F0BF300A3ED94 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		E4A29D992B1F177A00A3ED94 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E4A29D9B2B1F17A400A3ED94 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		E4A29D5C2B1C66F900A3ED94 /* WeatherChaser */ = {
 			isa = PBXGroup;
 			children = (
+				E4A29D962B1F174A00A3ED94 /* Networks */,
 				E4A29D6B2B1C66FA00A3ED94 /* Info.plist */,
 				E4A29D792B1C6EDE00A3ED94 /* Screens */,
 				E4A29D712B1C6AD100A3ED94 /* Application */,
@@ -144,6 +151,9 @@
 		E4A29D7A2B1C6EF800A3ED94 /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
+				E4A29D852B1DC71400A3ED94 /* Models */,
+				E4A29D842B1DC70900A3ED94 /* Views */,
+				E4A29D812B1DA9F100A3ED94 /* ViewModels */,
 				E4A29D7E2B1C77C400A3ED94 /* Coordinators */,
 				E4A29D7D2B1C77B800A3ED94 /* Controllers */,
 			);
@@ -164,6 +174,28 @@
 				E4A29D7F2B1C77E600A3ED94 /* WeatherListCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		E4A29D812B1DA9F100A3ED94 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29D822B1DC6AC00A3ED94 /* WeatherListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E4A29D842B1DC70900A3ED94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4A29D852B1DC71400A3ED94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E4A29D882B1E22A900A3ED94 /* AddCity */ = {
@@ -214,6 +246,15 @@
 				E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		E4A29D962B1F174A00A3ED94 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29D992B1F177A00A3ED94 /* NetworkManager.swift */,
+				E4A29D9B2B1F17A400A3ED94 /* URLManager.swift */,
+			);
+			path = Networks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,14 +356,17 @@
 				E4A29D802B1C77E600A3ED94 /* WeatherListCoordinator.swift in Sources */,
 				E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
+				E4A29D9A2B1F177A00A3ED94 /* NetworkManager.swift in Sources */,
 				E4A29D872B1E218600A3ED94 /* ButtonActionDelegate.swift in Sources */,
 				E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */,
 				E4A29D762B1C6BFE00A3ED94 /* Coordinator.swift in Sources */,
+				E4A29D832B1DC6AC00A3ED94 /* WeatherListViewModel.swift in Sources */,
 				E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */,
 				E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */,
 				E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */,
 				E4A29D782B1C6C6C00A3ED94 /* RootCoordinator.swift in Sources */,
 				E4A29D8B2B1E231700A3ED94 /* AddCityCoordinator.swift in Sources */,
+				E4A29D9C2B1F17A400A3ED94 /* URLManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
