@@ -28,6 +28,7 @@
 		E4A29DA02B1F20F000A3ED94 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D9F2B1F20F000A3ED94 /* WeatherResponse.swift */; };
 		E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */; };
 		E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */; };
+		E4A29DA72B1F299800A3ED94 /* AddCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA62B1F299800A3ED94 /* AddCityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E4A29D9F2B1F20F000A3ED94 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDesc.swift; sourceTree = "<group>"; };
 		E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellViewModel.swift; sourceTree = "<group>"; };
+		E4A29DA62B1F299800A3ED94 /* AddCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		E4A29D882B1E22A900A3ED94 /* AddCity */ = {
 			isa = PBXGroup;
 			children = (
+				E4A29DA52B1F298400A3ED94 /* ViewModels */,
 				E4A29D8C2B1E232700A3ED94 /* Controllers */,
 				E4A29D892B1E22D400A3ED94 /* Coordinators */,
 			);
@@ -267,6 +270,14 @@
 				E4A29D9B2B1F17A400A3ED94 /* URLManager.swift */,
 			);
 			path = Networks;
+			sourceTree = "<group>";
+		};
+		E4A29DA52B1F298400A3ED94 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29DA62B1F299800A3ED94 /* AddCityViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +390,7 @@
 				E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */,
 				E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */,
 				E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */,
+				E4A29DA72B1F299800A3ED94 /* AddCityViewModel.swift in Sources */,
 				E4A29D782B1C6C6C00A3ED94 /* RootCoordinator.swift in Sources */,
 				E4A29D8B2B1E231700A3ED94 /* AddCityCoordinator.swift in Sources */,
 				E4A29D9C2B1F17A400A3ED94 /* URLManager.swift in Sources */,
