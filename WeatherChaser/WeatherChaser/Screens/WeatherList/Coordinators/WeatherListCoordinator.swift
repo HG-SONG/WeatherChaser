@@ -18,11 +18,10 @@ class WeatherListCoordinator: Coordinator {
     
     func changeViewController() {
         let weatherListTableViewController = WeatherListTableViewController(nibName: nil, bundle: nil)
-        weatherListTableViewController.title = "WeatherChaser"
+        weatherListTableViewController.title = "Weather List"
         weatherListTableViewController.delegate = self
         
         self.weatherListTableViewController = weatherListTableViewController
-        
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
         
     }
