@@ -9,9 +9,17 @@ import UIKit
 
 class WeatherListTableViewController: UITableViewController {
     
+    var delegate: ButtonActionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = .white
+    @objc private func addCityButtonTouched() {
+        delegate?.addCityButtonTouched?()
     }
+    
+    @objc private func settingsButtonTouched() {
+        delegate?.settingsButtonTouched?()
+    }
+    
 }

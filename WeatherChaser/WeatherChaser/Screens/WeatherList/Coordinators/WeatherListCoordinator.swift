@@ -19,6 +19,7 @@ class WeatherListCoordinator: Coordinator {
     func changeViewController() {
         let weatherListTableViewController = WeatherListTableViewController(nibName: nil, bundle: nil)
         weatherListTableViewController.title = "WeatherChaser"
+        weatherListTableViewController.delegate = self
         
         self.weatherListTableViewController = weatherListTableViewController
         
@@ -26,4 +27,12 @@ class WeatherListCoordinator: Coordinator {
         
     }
     
+}
+
+extension WeatherListCoordinator : ButtonActionDelegate {
+    func addCityButtonTouched() {
+        let addCityCoordinator = AddCityCoordinator(presenter: self.presenter)
+        addCityCoordinator.changeViewController()
+        
+    }
 }
