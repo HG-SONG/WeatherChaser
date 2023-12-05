@@ -8,21 +8,43 @@
 import Foundation
 
 class NetworkManager {
-    func fetch<T>(resource: Resource<T>, completion: @escaping (T?) -> ()) {
+    func fetch<T>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> ()) {
         
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
-            if let data = data {
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.noData))
+                return
+            }
+            
+            do {
+                let parsedData = try resource.parsed(data)
                 DispatchQueue.main.async {
-                     completion(resource.parsed(data))
+                    if parsedData != nil {
+                        completion(.success(parsedData!))
+                    } else {
+                        completion(.failure(NetworkError.decodingFailure))
+                    }
+                    
                 }
-            } else {
-                completion(nil)
+            } catch {
+                completion(.failure(error))
             }
         }.resume()
     }
 }
 
+
 struct Resource<T> {
     let url: URL
-    let parsed: (Data) -> T?
+    let parsed: (Data) throws -> T?
+}
+
+enum NetworkError: Error {
+    case noData
+    case decodingFailure
 }
