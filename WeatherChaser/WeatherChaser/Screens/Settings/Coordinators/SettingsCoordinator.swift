@@ -5,4 +5,21 @@
 //  Created by SONG on 2023/12/05.
 //
 
-import Foundation
+import UIKit
+
+class SettingsCoordinator: Coordinator {
+    private var presenter: UINavigationController
+    private var settingsTableViewController : SettingsTableViewController?
+    
+    init(presenter: UINavigationController) {
+        self.presenter = presenter
+    }
+    func changeViewController() {
+        let settingsTableViewController = SettingsTableViewController(nibName: nil, bundle: nil)
+        settingsTableViewController.title = "Settings"
+        
+        self.settingsTableViewController = settingsTableViewController
+        self.presenter.pushViewController(settingsTableViewController, animated: true)
+    }
+    
+}
