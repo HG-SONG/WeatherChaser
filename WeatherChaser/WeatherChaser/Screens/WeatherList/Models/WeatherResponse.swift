@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherResponse: Codable {
-    let weather: WeatherDesc
+    let weather: [WeatherDesc]
     let main: Weather
     let name: String
 }
