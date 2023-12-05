@@ -8,7 +8,7 @@
 import Foundation
 
 struct URLManager {
-    static func URLForWeatherByCity(city: String) -> URL {
+    static func setURLforWeather(of city: String) -> URL {
         
         let userDefaults = UserDefaults.standard
         let unit = (userDefaults.value(forKey: "unit") as? String) ?? "metric"
