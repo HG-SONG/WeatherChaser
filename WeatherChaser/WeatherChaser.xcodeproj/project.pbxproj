@@ -27,6 +27,7 @@
 		E4A29D9E2B1F1E1A00A3ED94 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D9D2B1F1E1A00A3ED94 /* Weather.swift */; };
 		E4A29DA02B1F20F000A3ED94 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D9F2B1F20F000A3ED94 /* WeatherResponse.swift */; };
 		E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */; };
+		E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		E4A29D9D2B1F1E1A00A3ED94 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E4A29D9F2B1F20F000A3ED94 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDesc.swift; sourceTree = "<group>"; };
+		E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				E4A29D822B1DC6AC00A3ED94 /* WeatherListViewModel.swift */,
+				E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				E4A29D802B1C77E600A3ED94 /* WeatherListCoordinator.swift in Sources */,
 				E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
+				E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */,
 				E4A29D9A2B1F177A00A3ED94 /* NetworkManager.swift in Sources */,
 				E4A29D9E2B1F1E1A00A3ED94 /* Weather.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
