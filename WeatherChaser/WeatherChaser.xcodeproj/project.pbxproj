@@ -19,6 +19,8 @@
 		E4A29D872B1E218600A3ED94 /* ButtonActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D862B1E218600A3ED94 /* ButtonActionDelegate.swift */; };
 		E4A29D8B2B1E231700A3ED94 /* AddCityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D8A2B1E231700A3ED94 /* AddCityCoordinator.swift */; };
 		E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D8D2B1E233400A3ED94 /* AddCityViewController.swift */; };
+		E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D922B1F0BF300A3ED94 /* SettingsTableViewController.swift */; };
+		E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E4A29D862B1E218600A3ED94 /* ButtonActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActionDelegate.swift; sourceTree = "<group>"; };
 		E4A29D8A2B1E231700A3ED94 /* AddCityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityCoordinator.swift; sourceTree = "<group>"; };
 		E4A29D8D2B1E233400A3ED94 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		E4A29D922B1F0BF300A3ED94 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		E4A29D792B1C6EDE00A3ED94 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E4A29D8F2B1F0BC400A3ED94 /* Settings */,
 				E4A29D882B1E22A900A3ED94 /* AddCity */,
 				E4A29D7A2B1C6EF800A3ED94 /* WeatherList */,
 			);
@@ -184,6 +189,31 @@
 				E4A29D8D2B1E233400A3ED94 /* AddCityViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E4A29D8F2B1F0BC400A3ED94 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29D912B1F0BD900A3ED94 /* Coordinators */,
+				E4A29D902B1F0BD100A3ED94 /* Controllers */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E4A29D902B1F0BD100A3ED94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29D922B1F0BF300A3ED94 /* SettingsTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E4A29D912B1F0BD900A3ED94 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				E4A29D942B1F0C0400A3ED94 /* SettingsCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,8 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4A29D802B1C77E600A3ED94 /* WeatherListCoordinator.swift in Sources */,
+				E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
 				E4A29D872B1E218600A3ED94 /* ButtonActionDelegate.swift in Sources */,
+				E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */,
 				E4A29D762B1C6BFE00A3ED94 /* Coordinator.swift in Sources */,
 				E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */,
 				E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */,
