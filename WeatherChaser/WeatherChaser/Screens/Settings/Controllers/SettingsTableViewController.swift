@@ -5,4 +5,12 @@
 //  Created by SONG on 2023/12/05.
 //
 
-import Foundation
+import UIKit
+
+class SettingsTableViewController : UITableViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .red
+    }
+}
