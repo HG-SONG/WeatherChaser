@@ -32,7 +32,6 @@ extension WeatherListCoordinator : ButtonActionDelegate {
     func addCityButtonTouched() {
         let addCityCoordinator = AddCityCoordinator(presenter: self.presenter)
         addCityCoordinator.changeViewController()
-        
     }
     
     func settingsButtonTouched() {
