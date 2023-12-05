@@ -10,6 +10,7 @@ import UIKit
 class WeatherListCoordinator: Coordinator {
     private var presenter : UINavigationController
     private var weatherListTableViewController : WeatherListTableViewController?
+    private var addCityCoordinator : AddCityCoordinator?
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
