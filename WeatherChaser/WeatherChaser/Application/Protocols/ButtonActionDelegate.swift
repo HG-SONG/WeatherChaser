@@ -10,5 +10,8 @@ import Foundation
 @objc protocol ButtonActionDelegate {
     @objc optional func addCityButtonTouched()
     @objc optional func settingsButtonTouched()
-    @objc optional func backButtonTouched()
+}
+
+protocol AddCityDelegate {
+    func saveButtonTouched(viewModel: WeatherCellViewModel)
 }
