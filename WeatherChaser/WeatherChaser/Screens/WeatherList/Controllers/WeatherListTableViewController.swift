@@ -35,6 +35,7 @@ class WeatherListTableViewController: UITableViewController {
     
     private func commonInit() {
         setBarButtons()
+        self.tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.identifier)
     }
     
     private func setBarButtons() {
@@ -55,4 +56,28 @@ class WeatherListTableViewController: UITableViewController {
         delegate?.settingsButtonTouched?()
     }
     
+}
+
+extension WeatherListTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherListViewModel.numberOfRows(section)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let weatherViewModel = weatherListViewModel.modelAt(indexPath.row)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as! WeatherCell
+        
+        cell.commonInit(weatherViewModel)
+        return cell
+    }
 }
