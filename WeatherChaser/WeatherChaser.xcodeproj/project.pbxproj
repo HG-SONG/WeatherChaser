@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		70D815B5DE5A313D12379F1F /* Pods_WeatherChaser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7221BF3A7CDF607A4A18E9BE /* Pods_WeatherChaser.framework */; };
+		E4022ABB2B230BB500E9EC15 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABA2B230BB500E9EC15 /* WeatherCell.swift */; };
+		E4022ABE2B2310D000E9EC15 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		0578FAE6BE74E8F676A1D66B /* Pods-WeatherChaser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherChaser.debug.xcconfig"; path = "Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser.debug.xcconfig"; sourceTree = "<group>"; };
 		7221BF3A7CDF607A4A18E9BE /* Pods_WeatherChaser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherChaser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C77B536A8DE5B5B16F7FB4 /* Pods-WeatherChaser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherChaser.release.xcconfig"; path = "Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser.release.xcconfig"; sourceTree = "<group>"; };
+		E4022ABA2B230BB500E9EC15 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E4022ABC2B2310BB00E9EC15 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E4A29D512B1C66F900A3ED94 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +122,7 @@
 		E4A29D5C2B1C66F900A3ED94 /* WeatherChaser */ = {
 			isa = PBXGroup;
 			children = (
+				E4022ABC2B2310BB00E9EC15 /* Extensions */,
 				E4A29D962B1F174A00A3ED94 /* Networks */,
 				E4A29D6B2B1C66FA00A3ED94 /* Info.plist */,
 				E4A29D792B1C6EDE00A3ED94 /* Screens */,
@@ -198,6 +211,7 @@
 		E4A29D842B1DC70900A3ED94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4022ABA2B230BB500E9EC15 /* WeatherCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -388,6 +402,8 @@
 				E4A29D762B1C6BFE00A3ED94 /* Coordinator.swift in Sources */,
 				E4A29D832B1DC6AC00A3ED94 /* WeatherListViewModel.swift in Sources */,
 				E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */,
+				E4022ABE2B2310D000E9EC15 /* DoubleExtension.swift in Sources */,
+				E4022ABB2B230BB500E9EC15 /* WeatherCell.swift in Sources */,
 				E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */,
 				E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */,
 				E4A29DA72B1F299800A3ED94 /* AddCityViewModel.swift in Sources */,
