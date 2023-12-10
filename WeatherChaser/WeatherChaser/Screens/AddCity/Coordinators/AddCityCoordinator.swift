@@ -18,10 +18,15 @@ class AddCityCoordinator : Coordinator {
     func changeViewController() {
         let addCityViewController = AddCityViewController(nibName: nil, bundle: nil)
         addCityViewController.title = "Add City"
-        
+        addCityViewController.delegate = self
         self.addCityViewController = addCityViewController
         presenter.pushViewController(addCityViewController, animated: true)
     }
-    
-    
+}
+
+extension AddCityCoordinator: AddCityDelegate {
+    func saveButtonTouched(viewModel: WeatherCellViewModel) {
+        let weatherListCoordinator = WeatherListCoordinator(presenter: self.presenter)
+        weatherListCoordinator.changeViewController(with: viewModel)
+    }
 }
