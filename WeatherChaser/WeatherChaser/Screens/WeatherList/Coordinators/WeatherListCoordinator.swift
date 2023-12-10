@@ -17,13 +17,24 @@ class WeatherListCoordinator: Coordinator {
     }
     
     func changeViewController() {
-        let weatherListTableViewController = WeatherListTableViewController(nibName: nil, bundle: nil)
+        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: nil)
         weatherListTableViewController.title = "Weather List"
         weatherListTableViewController.delegate = self
         
         self.weatherListTableViewController = weatherListTableViewController
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
+    }
+    
+    func changeViewController(with viewModel: Any) {
+        guard let viewModel = viewModel as? WeatherCellViewModel else {
+            return
+        }
+        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: viewModel)
+        weatherListTableViewController.title = "Weather List"
+        weatherListTableViewController.delegate = self
         
+        self.weatherListTableViewController = weatherListTableViewController
+        self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
     
 }
