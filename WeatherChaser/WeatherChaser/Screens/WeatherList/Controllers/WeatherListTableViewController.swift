@@ -11,6 +11,20 @@ class WeatherListTableViewController: UITableViewController {
     
     private var addCityButton : UIBarButtonItem!
     private var settingsButton : UIBarButtonItem!
+    private var weatherListViewModel = WeatherListViewModel()
+    
+    init(cellViewModel: WeatherCellViewModel?) {
+        super.init(nibName: nil, bundle: nil)
+        guard let cellViewModel = cellViewModel else {
+            return
+        }
+        self.weatherListViewModel.setWeatherCellViewModel(cellViewModel)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     var delegate: ButtonActionDelegate?
     
     override func viewDidLoad() {
