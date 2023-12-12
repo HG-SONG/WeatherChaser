@@ -35,6 +35,7 @@ class WeatherListTableViewController: UITableViewController {
     
     private func commonInit() {
         setBarButtons()
+        self.tableView.backgroundColor = .black
         self.tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.identifier)
     }
     
@@ -55,7 +56,6 @@ class WeatherListTableViewController: UITableViewController {
     @objc private func settingsButtonTouched() {
         delegate?.settingsButtonTouched?()
     }
-    
 }
 
 extension WeatherListTableViewController {
@@ -64,7 +64,8 @@ extension WeatherListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        
+        return 200
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
