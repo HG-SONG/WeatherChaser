@@ -10,6 +10,7 @@
 		70D815B5DE5A313D12379F1F /* Pods_WeatherChaser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7221BF3A7CDF607A4A18E9BE /* Pods_WeatherChaser.framework */; };
 		E4022ABB2B230BB500E9EC15 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABA2B230BB500E9EC15 /* WeatherCell.swift */; };
 		E4022ABE2B2310D000E9EC15 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */; };
+		E4022AC02B26F10E00E9EC15 /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABF2B26F10E00E9EC15 /* IconType.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		84C77B536A8DE5B5B16F7FB4 /* Pods-WeatherChaser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherChaser.release.xcconfig"; path = "Target Support Files/Pods-WeatherChaser/Pods-WeatherChaser.release.xcconfig"; sourceTree = "<group>"; };
 		E4022ABA2B230BB500E9EC15 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		E4022ABF2B26F10E00E9EC15 /* IconType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				E4A29D822B1DC6AC00A3ED94 /* WeatherListViewModel.swift */,
 				E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */,
+				E4022ABF2B26F10E00E9EC15 /* IconType.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				E4A29D9E2B1F1E1A00A3ED94 /* Weather.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
 				E4A29D872B1E218600A3ED94 /* ButtonActionDelegate.swift in Sources */,
+				E4022AC02B26F10E00E9EC15 /* IconType.swift in Sources */,
 				E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */,
 				E4A29D762B1C6BFE00A3ED94 /* Coordinator.swift in Sources */,
 				E4A29D832B1DC6AC00A3ED94 /* WeatherListViewModel.swift in Sources */,
