@@ -9,13 +9,17 @@ import Foundation
 
 class WeatherCellViewModel {
     let weather : WeatherResponse
-    var temperature: Double
-    var feelsLikeTemperature: Double
+    var temperature: String
+    var feelsLikeTemperature: String
+    var maxTemperature: String
+    var minTemperature: String
     
     init(weather: WeatherResponse) {
         self.weather = weather
-        self.temperature = weather.main.temp
-        self.feelsLikeTemperature = weather.main.feels_like
+        self.temperature = weather.main.temp.formatAsDegree()
+        self.feelsLikeTemperature = weather.main.feels_like.formatAsDegree()
+        self.maxTemperature = weather.main.temp_max.formatAsDegree()
+        self.minTemperature = weather.main.temp_min.formatAsDegree()
     }
     
     var city: String {
@@ -39,7 +43,7 @@ class WeatherCellViewModel {
         }
     }
     
-    var time: String {
+    var timeDesc: String {
         let currentTime = self.weather.dt
         let sunriseTime = self.weather.sys.sunrise
         let sunsetTime = self.weather.sys.sunset
@@ -63,16 +67,16 @@ class WeatherCellViewModel {
         switch self.iconDesc {
         case IconType.snow.rawValue :
             wd = "snow"
-            return wd + "_" + time + ".jpg"
+            return wd + "_" + timeDesc + ".jpg"
         case IconType.rain.rawValue :
             wd = "rain"
-            return wd + "_" + time + ".jpg"
+            return wd + "_" + timeDesc + ".jpg"
         case IconType.clouds.rawValue :
             wd = "clouds"
-            return wd + "_" + time + ".jpg"
+            return wd + "_" + timeDesc + ".jpg"
         default:
             wd = "nothing"
-            return wd + "_" + time + ".jpg"
+            return wd + "_" + timeDesc + ".jpg"
         }
     }
     
