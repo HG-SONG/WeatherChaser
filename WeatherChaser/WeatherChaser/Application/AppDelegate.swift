@@ -12,8 +12,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        setupDefaultSettings()
+        UINavigationBar.appearance().barTintColor = .black
         
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        
+        UIImageView.appearance().tintColor = UIColor.white
+        
+        UILabel.appearance().textColor = UIColor.white
+        
+        UITableViewCell.appearance().backgroundColor = .black
+        setupDefaultSettings()
         return true
     }
 
