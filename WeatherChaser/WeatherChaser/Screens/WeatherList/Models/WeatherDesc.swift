@@ -8,5 +8,6 @@
 import Foundation
 
 struct WeatherDesc: Codable {
+    let main: String
     let description: String
 }
