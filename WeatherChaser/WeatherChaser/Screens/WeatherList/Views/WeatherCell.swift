@@ -30,24 +30,15 @@ class WeatherCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layoutBackbroundImageView()
         layoutNameLabel()
+        layoutThisMomentLabel()
+        layoutUpdatedAtLabel()
         layoutTemperatureLabel()
+        layoutTemperatureSubStackView()
         layoutWeatherSymbol()
     }
     
-    private func layoutBackbroundImageView() {
-        if !self.subviews.contains(backgoundImageView) {
-            self.addSubview(backgoundImageView)
-        }
-        
-        backgoundImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-            [
-                
-            ]
-        )
-    }
+    // MARK: Layout Configurations
     
     private func layoutNameLabel() {
         if !self.subviews.contains(nameLabel) {
@@ -57,23 +48,51 @@ class WeatherCell: UITableViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+                nameLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: 20.0),
                 nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
                 nameLabel.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.5)
             ]
         )
     }
     
-    private func layoutTemperatureLabel() {
-        if !self.subviews.contains(temperatureLabel) {
-            self.addSubview(temperatureLabel)
+    private func layoutThisMomentLabel() {
+        if !self.subviews.contains(thisMomentLabel) {
+            self.addSubview(thisMomentLabel)
         }
         
-        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        thisMomentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                temperatureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                temperatureLabel.leadingAnchor.constraint(equalTo: self.centerXAnchor)
+                thisMomentLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor),
+                thisMomentLabel.leadingAnchor.constraint(equalTo: self.nameLabel.leadingAnchor)
+            ]
+        )
+    }
+    
+    private func layoutUpdatedAtLabel() {
+        if !self.subviews.contains(updatedAtLabel) {
+            self.addSubview(updatedAtLabel)
+        }
+        
+        updatedAtLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                updatedAtLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: 20.0),
+                updatedAtLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20.0)
+            ]
+        )
+    }
+    
+    private func layoutTemperatureLabel() {
+        if !self.subviews.contains(temperatureMainLabel) {
+            self.addSubview(temperatureMainLabel)
+        }
+        
+        temperatureMainLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                temperatureMainLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -20.0),
+                temperatureMainLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 20.0)
             ]
         )
     }
@@ -87,10 +106,24 @@ class WeatherCell: UITableViewCell {
         weatherSymbol.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                weatherSymbol.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                weatherSymbol.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
-                weatherSymbol.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
-                weatherSymbol.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20.0)
+                weatherSymbol.heightAnchor.constraint(equalTo: self.nameLabel.heightAnchor),
+                weatherSymbol.widthAnchor.constraint(equalTo: self.weatherSymbol.heightAnchor),
+                weatherSymbol.leadingAnchor.constraint(equalTo: self.temperatureSubStackView.trailingAnchor,constant: 20.0),
+                weatherSymbol.centerYAnchor.constraint(equalTo: self.temperatureSubStackView.centerYAnchor)
+            ]
+        )
+    }
+    
+    private func layoutTemperatureSubStackView(){
+        if !self.subviews.contains(temperatureSubStackView) {
+            self.addSubview(temperatureSubStackView)
+        }
+        
+        temperatureSubStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                temperatureSubStackView.leadingAnchor.constraint(equalTo: temperatureMainLabel.trailingAnchor, constant: 15.0),
+                temperatureSubStackView.centerYAnchor.constraint(equalTo: temperatureMainLabel.centerYAnchor)
             ]
         )
     }
