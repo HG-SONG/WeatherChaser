@@ -10,9 +10,12 @@ import UIKit
 class WeatherCell: UITableViewCell {
     static let identifier = "WeatherCell"
     private var nameLabel = UILabel(frame: .zero)
-    private var temperatureLabel = UILabel(frame: .zero)
+    private var thisMomentLabel = UILabel(frame: .zero)
+    private var temperatureMainLabel = UILabel(frame: .zero)
+    private var temperatureSubStackView = UIStackView(frame: .zero)
     private var weatherSymbol = UIImageView(frame:.zero)
     private var backgoundImageView = UIImageView(frame: .zero)
+    private var updatedAtLabel = UILabel(frame: .zero)
     
     func commonInit(_ viewModel: WeatherCellViewModel) {
         self.backgoundImageView.image = UIImage(named: viewModel.backgroundImageName)
