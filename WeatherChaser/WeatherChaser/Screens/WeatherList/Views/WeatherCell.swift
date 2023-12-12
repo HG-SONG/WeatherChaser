@@ -11,6 +11,7 @@ class WeatherCell: UITableViewCell {
     static let identifier = "WeatherCell"
     private var nameLabel = UILabel(frame: .zero)
     private var temperatureLabel = UILabel(frame: .zero)
+    private var weatherSymbol = UIImageView(frame:.zero)
     private var backgoundImageView = UIImageView(frame: .zero)
     
     func commonInit(_ viewModel: WeatherCellViewModel) {
@@ -23,6 +24,7 @@ class WeatherCell: UITableViewCell {
         self.temperatureLabel.text = viewModel.temperature.formatAsDegree()
         self.temperatureLabel.font = self.temperatureLabel.font.withSize(40.0)
         
+        self.weatherSymbol.image = UIImage(systemName: viewModel.iconDesc)
     }
     
     override func layoutSubviews() {
@@ -55,7 +57,8 @@ class WeatherCell: UITableViewCell {
         NSLayoutConstraint.activate(
             [
                 nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0)
+                nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
+                nameLabel.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.5)
             ]
         )
     }
@@ -69,7 +72,24 @@ class WeatherCell: UITableViewCell {
         NSLayoutConstraint.activate(
             [
                 temperatureLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-                temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20.0)
+                temperatureLabel.leadingAnchor.constraint(equalTo: self.centerXAnchor)
+            ]
+        )
+    }
+    
+    private func layoutWeatherSymbol() {
+        
+        if !self.subviews.contains(weatherSymbol) {
+            self.addSubview(weatherSymbol)
+        }
+        
+        weatherSymbol.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                weatherSymbol.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+                weatherSymbol.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
+                weatherSymbol.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
+                weatherSymbol.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20.0)
             ]
         )
     }
