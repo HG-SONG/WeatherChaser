@@ -18,16 +18,14 @@ class WeatherCell: UITableViewCell {
     private var updatedAtLabel = UILabel(frame: .zero)
     
     func commonInit(_ viewModel: WeatherCellViewModel) {
-        self.backgoundImageView.image = UIImage(named: viewModel.backgroundImageName)
-        self.backgoundImageView.contentMode = .scaleAspectFill
-        
-        self.nameLabel.text = viewModel.city
-        self.nameLabel.font = self.nameLabel.font.withSize(40.0)
-        
-        self.temperatureLabel.text = viewModel.temperature.formatAsDegree()
-        self.temperatureLabel.font = self.temperatureLabel.font.withSize(40.0)
-        
-        self.weatherSymbol.image = UIImage(systemName: viewModel.iconDesc)
+        disableSelectionHighlight()
+        configureBackgroundImageView(viewModel)
+        configureNameLabel(viewModel)
+        configureThisMomentLabel()
+        configureUpdatedAt(viewModel)
+        configureTemperatureLabel(viewModel)
+        configureTemperatureWeatherSymbol(viewModel)
+        configureTemperatureSubStackView(viewModel)
     }
     
     override func layoutSubviews() {
@@ -96,4 +94,71 @@ class WeatherCell: UITableViewCell {
             ]
         )
     }
+}
+
+// MARK: Property Configurations
+
+extension WeatherCell {
+
+    private func disableSelectionHighlight() {
+        self.selectionStyle = .none
+    }
+    
+    private func configureBackgroundImageView(_ viewModel: WeatherCellViewModel) {
+        self.backgoundImageView.image = UIImage(named: viewModel.backgroundImageName)
+        self.backgoundImageView.contentMode = .scaleToFill
+        self.backgoundImageView.clipsToBounds = true
+        self.backgroundView = self.backgoundImageView
+    }
+    
+    private func configureTemperatureLabel(_ viewModel: WeatherCellViewModel) {
+        self.temperatureMainLabel.text = viewModel.temperature
+        self.temperatureMainLabel.font = self.temperatureMainLabel.font.withSize(80.0)
+    }
+    
+    private func configureTemperatureWeatherSymbol(_ viewModel: WeatherCellViewModel) {
+        self.weatherSymbol.image = UIImage(systemName: viewModel.iconDesc)
+    }
+    
+    private func configureNameLabel(_ viewModel: WeatherCellViewModel){
+        self.nameLabel.text = viewModel.city
+        self.nameLabel.font = UIFont.boldSystemFont(ofSize: 40.0)
+    }
+    
+    private func configureThisMomentLabel() {
+        self.thisMomentLabel.text = "at this moment"
+        self.thisMomentLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
+    }
+    
+    private func configureUpdatedAt(_ viewModel: WeatherCellViewModel) {
+        self.updatedAtLabel.text = "Updated • " + viewModel.currentTime
+        self.updatedAtLabel.textColor = .gray
+        self.updatedAtLabel.font = UIFont.boldSystemFont(ofSize: 13.0)
+    }
+    
+    private func configureTemperatureSubStackView(_ viewModel: WeatherCellViewModel){
+        let max = "Max • " + viewModel.maxTemperature
+        let feelsLike = "Feels like • " + viewModel.feelsLikeTemperature
+        let min = "Min • " + viewModel.minTemperature
+        
+        let maxLabel = makeLabel(text: max, fontColor: .maxTemp)
+        let feelsLikeLabel = makeLabel(text: feelsLike, fontColor: .feelsTemp)
+        let minLabel = makeLabel(text: min, fontColor: .minTemp)
+        
+        self.temperatureSubStackView.axis = .vertical
+        self.temperatureSubStackView.addArrangedSubview(maxLabel)
+        self.temperatureSubStackView.addArrangedSubview(feelsLikeLabel)
+        self.temperatureSubStackView.addArrangedSubview(minLabel)
+    }
+    
+    private func makeLabel(text:String,fontColor:UIColor) -> UILabel{
+        let label = UILabel()
+        label.text = text
+        label.textColor = fontColor
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        
+        return label
+    }
+    
+    
 }
