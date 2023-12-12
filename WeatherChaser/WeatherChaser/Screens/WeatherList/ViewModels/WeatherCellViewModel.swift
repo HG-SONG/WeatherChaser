@@ -80,4 +80,15 @@ class WeatherCellViewModel {
         }
     }
     
+    var currentTime: String {
+        let timestamp = TimeInterval(self.weather.dt)
+        let date = Date(timeIntervalSince1970: timestamp)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY-MM-dd HH:mm"
+        let formattedDate = dateFormatter.string(from: date)
+        return formattedDate
+    }
+    
+    
 }
