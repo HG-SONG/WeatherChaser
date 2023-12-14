@@ -10,10 +10,6 @@ import Foundation
 class WeatherListViewModel {
     private var weatherCellViewModels : [WeatherCellViewModel] = []
     
-//    init(weathers: [WeatherCellViewModel]) {
-//        self.weatherCellViewModels = weathers
-//    }
-    
     func numberOfRows(_ section: Int?) -> Int {
         return weatherCellViewModels.count
     }
