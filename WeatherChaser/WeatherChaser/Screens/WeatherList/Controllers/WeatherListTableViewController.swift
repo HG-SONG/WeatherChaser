@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherListTableViewController: UITableViewController {
-    
+    private let locationManager = LocationManager()
     private var addCityButton : UIBarButtonItem!
     private var settingsButton : UIBarButtonItem!
     private var weatherListViewModel = WeatherListViewModel()
@@ -37,6 +38,7 @@ class WeatherListTableViewController: UITableViewController {
         setBarButtons()
         self.tableView.backgroundColor = .black
         self.tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.identifier)
+        requestUserLocation()
     }
     
     private func setBarButtons() {
@@ -56,6 +58,19 @@ class WeatherListTableViewController: UITableViewController {
     @objc private func settingsButtonTouched() {
         delegate?.settingsButtonTouched?()
     }
+    
+    private func requestUserLocation() {
+        self.locationManager.requestLocation { location in
+            let tmp = AddCityViewModel()
+            let lat = location.coordinate.latitude.description
+            let lon = location.coordinate.longitude.description
+            
+            tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel in
+                self.weatherListViewModel.setWeatherCellViewModel(viewModel)
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 extension WeatherListTableViewController {
@@ -73,12 +88,15 @@ extension WeatherListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let reversedViewModel = weatherListViewModel.reversed()
         
-        let weatherViewModel = weatherListViewModel.modelAt(indexPath.row)
+        let weatherViewModel = reversedViewModel[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as! WeatherCell
         
         cell.commonInit(weatherViewModel)
         return cell
     }
+
 }
+
