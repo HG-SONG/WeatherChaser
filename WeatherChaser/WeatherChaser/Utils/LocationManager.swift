@@ -17,8 +17,34 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        checkLocationAuthorization()
     }
-
+    
+    private func checkLocationAuthorization() {
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                switch CLLocationManager.authorizationStatus() {
+                case .authorizedWhenInUse, .authorizedAlways:
+                    print("Location services authorized")
+                case .denied, .restricted:
+                    print("Location services denied or restricted")
+                case .notDetermined:
+                    print("Requesting location authorization")
+                    self.locationManager.requestWhenInUseAuthorization()
+                @unknown default:
+                    break
+                }
+            } else {
+                print("Location services are not enabled")
+            }
+        }
+    }
+    
+    func requestLocation(completion: @escaping (CLLocation) -> Void) {
+        completionHandler = completion
+        locationManager.requestLocation()
+    }
+    
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
