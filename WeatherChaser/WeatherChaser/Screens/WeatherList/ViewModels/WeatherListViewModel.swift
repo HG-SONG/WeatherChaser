@@ -21,4 +21,9 @@ class WeatherListViewModel {
     func setWeatherCellViewModel(_ viewModel : WeatherCellViewModel) {
         self.weatherCellViewModels.append(viewModel)
     }
+    
+    func reversed() -> [WeatherCellViewModel] {
+        return weatherCellViewModels.reversed()
+    }
+
 }
