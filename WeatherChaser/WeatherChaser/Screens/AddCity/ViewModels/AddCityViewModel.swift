@@ -8,8 +8,16 @@
 import Foundation
 
 class AddCityViewModel {
-    func addWeatherCellViewModel(for city: String, completion: @escaping (WeatherCellViewModel) -> Void) {
-        let weatherURL = URLManager.setURLforWeather(of: city)
+    func addWeatherCellViewModel(for city: String?, lat:  String?, lon: String?, completion: @escaping (WeatherCellViewModel) -> Void) {
+        var weatherURL: URL!
+        
+        if let city = city {
+            weatherURL = URLManager.setURLforWeather(of: city)
+        } else {
+            if lat != nil && lon != nil {
+                weatherURL = URLManager.setURLforWeatherByGPS(lat: lat!, lon: lon!)
+            }
+        }
         
         let weatherResource = Resource<WeatherResponse>(url: weatherURL) { data in
             let weatherResponse = try? JSONDecoder().decode(WeatherResponse.self, from: data)
