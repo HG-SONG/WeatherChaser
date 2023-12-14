@@ -49,8 +49,7 @@ class WeatherCell: UITableViewCell {
         NSLayoutConstraint.activate(
             [
                 nameLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: 20.0),
-                nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0),
-                nameLabel.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor, multiplier: 0.5)
+                nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20.0)
             ]
         )
     }
@@ -77,8 +76,8 @@ class WeatherCell: UITableViewCell {
         updatedAtLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                updatedAtLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: 20.0),
-                updatedAtLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20.0)
+                updatedAtLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: 5.0),
+                updatedAtLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -5.0)
             ]
         )
     }
@@ -115,6 +114,7 @@ class WeatherCell: UITableViewCell {
     }
     
     private func layoutTemperatureSubStackView(){
+        
         if !self.subviews.contains(temperatureSubStackView) {
             self.addSubview(temperatureSubStackView)
         }
@@ -165,11 +165,13 @@ extension WeatherCell {
     
     private func configureUpdatedAt(_ viewModel: WeatherCellViewModel) {
         self.updatedAtLabel.text = "Updated • " + viewModel.currentTime
-        self.updatedAtLabel.textColor = .gray
+        self.updatedAtLabel.textColor = .lightGray
         self.updatedAtLabel.font = UIFont.boldSystemFont(ofSize: 13.0)
     }
     
     private func configureTemperatureSubStackView(_ viewModel: WeatherCellViewModel){
+        self.temperatureSubStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        
         let max = "Max • " + viewModel.maxTemperature
         let feelsLike = "Feels like • " + viewModel.feelsLikeTemperature
         let min = "Min • " + viewModel.minTemperature
