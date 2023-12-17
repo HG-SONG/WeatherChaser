@@ -12,7 +12,10 @@ struct URLManager {
         
         let userDefaults = UserDefaults.standard
         let unit = (userDefaults.value(forKey: "unit") as? String) ?? "metric"
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=3f38d0611c913b55c3b0beb801842ad6&units=\(unit)")!
+        let cityName = city.replaceSpacesWithDash()
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=3f38d0611c913b55c3b0beb801842ad6&units=\(unit)") else {
+            return URL(string: "")!
+        }
         
         return url
     }
