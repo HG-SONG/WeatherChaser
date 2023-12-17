@@ -46,8 +46,12 @@ class AddCityViewController : UIViewController {
     }
     
     @objc private func saveButtonTouched() {
-        addCityViewModel.addWeatherCellViewModel(for: "Seoul", lat: nil, lon: nil) { viewModel in
-            self.delegate?.saveButtonTouched(viewModel: viewModel)
+        guard let cityName = cityNameTextField.text else {
+            return
+        }
+        
+        addCityViewModel.addWeatherCellViewModel(for: cityName, lat: nil, lon: nil) { viewModel in
+            self.delegate?.saveButtonTouched()
         }
     }
 }
