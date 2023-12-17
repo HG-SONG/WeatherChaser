@@ -96,15 +96,15 @@ extension WeatherListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reversedViewModel = weatherListViewModel.reversed()
-        
-        let weatherViewModel = reversedViewModel[indexPath.row]
-        
+//        let reversedViewModel = weatherListViewModel.reversed()
+//        print(weatherListViewModel)
+//        let weatherViewModel = reversedViewModel[indexPath.row]
+        let weatherViewModel = self.weatherListViewModel.modelAt(indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as! WeatherCell
         
         cell.commonInit(weatherViewModel)
         return cell
     }
-
+    
 }
 
