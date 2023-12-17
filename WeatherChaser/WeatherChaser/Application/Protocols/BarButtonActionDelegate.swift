@@ -13,5 +13,5 @@ import Foundation
 }
 
 protocol AddCityDelegate {
-    func saveButtonTouched(viewModel: WeatherCellViewModel)
+    func saveButtonTouched()
 }

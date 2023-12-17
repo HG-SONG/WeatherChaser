@@ -25,8 +25,7 @@ class AddCityCoordinator : Coordinator {
 }
 
 extension AddCityCoordinator: AddCityDelegate {
-    func saveButtonTouched(viewModel: WeatherCellViewModel) {
-        let weatherListCoordinator = WeatherListCoordinator(presenter: self.presenter)
-        weatherListCoordinator.changeViewController(with: viewModel)
+    func saveButtonTouched() {
+        presenter.popViewController(animated: true)
     }
 }
