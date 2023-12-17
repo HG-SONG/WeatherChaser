@@ -26,7 +26,7 @@ class WeatherListTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     
-    var delegate: ButtonActionDelegate?
+    var delegate: BarButtonActionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
