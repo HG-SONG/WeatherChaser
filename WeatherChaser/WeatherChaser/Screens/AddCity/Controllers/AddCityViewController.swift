@@ -51,6 +51,7 @@ class AddCityViewController : UIViewController {
         }
         
         addCityViewModel.addWeatherCellViewModel(for: cityName, lat: nil, lon: nil) { viewModel in
+            NotificationCenter.default.post(name: NSNotification.Name("UpdateCellNotification"), object: nil, userInfo: ["data": viewModel])
             self.delegate?.saveButtonTouched()
         }
     }

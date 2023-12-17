@@ -16,10 +16,18 @@ class WeatherListTableViewController: UITableViewController {
 
     override init(style: UITableView.Style) {
         super.init(style: style)
-        guard let cellViewModel = cellViewModel else {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateData(_:)), name: NSNotification.Name("UpdateCellNotification"), object: nil)
     }
+    
+    @objc func updateData(_ notification: Notification) {
+        if let data = notification.userInfo?["data"] as? WeatherCellViewModel {
+            weatherListViewModel.addWeatherCellInViewModel(data)
         }
-        self.weatherListViewModel.setWeatherCellViewModel(cellViewModel)
+        self.tableView.reloadData()
+    }
+    
+    func addCity(cellViewModel: WeatherCellViewModel) {
+        self.weatherListViewModel.addWeatherCellInViewModel(cellViewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -66,7 +74,7 @@ class WeatherListTableViewController: UITableViewController {
             let lon = location.coordinate.longitude.description
             
             tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel in
-                self.weatherListViewModel.setWeatherCellViewModel(viewModel)
+                self.weatherListViewModel.addWeatherCellInViewModel(viewModel)
                 self.tableView.reloadData()
             }
         }
