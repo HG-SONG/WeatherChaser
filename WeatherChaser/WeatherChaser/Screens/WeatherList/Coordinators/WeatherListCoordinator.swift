@@ -17,11 +17,11 @@ class WeatherListCoordinator: Coordinator {
     }
     
     func changeViewController() {
-        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: nil)
-        weatherListTableViewController.title = "Weather List"
-        weatherListTableViewController.delegate = self
+//        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: nil)
+        self.weatherListTableViewController.title = "Weather List"
+        self.weatherListTableViewController.delegate = self
         
-        self.weatherListTableViewController = weatherListTableViewController
+//        self.weatherListTableViewController = weatherListTableViewController
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
     
@@ -29,19 +29,19 @@ class WeatherListCoordinator: Coordinator {
         guard let viewModel = viewModel as? WeatherCellViewModel else {
             return
         }
-        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: viewModel)
-        weatherListTableViewController.title = "Weather List"
-        weatherListTableViewController.delegate = self
+        self.weatherListTableViewController.title = "Weather List"
+        self.weatherListTableViewController.delegate = self
         
-        self.weatherListTableViewController = weatherListTableViewController
+        self.weatherListTableViewController.addCity(cellViewModel: viewModel)
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
     
 }
 
-extension WeatherListCoordinator : ButtonActionDelegate {
+extension WeatherListCoordinator : BarButtonActionDelegate {
     func addCityButtonTouched() {
         let addCityCoordinator = AddCityCoordinator(presenter: self.presenter)
+        
         addCityCoordinator.changeViewController()
     }
     

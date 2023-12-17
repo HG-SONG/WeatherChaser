@@ -18,7 +18,7 @@ class WeatherListViewModel {
         return weatherCellViewModels[index]
     }
     
-    func setWeatherCellViewModel(_ viewModel : WeatherCellViewModel) {
+    func addWeatherCellInViewModel(_ viewModel : WeatherCellViewModel) {
         self.weatherCellViewModels.append(viewModel)
     }
     
