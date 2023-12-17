@@ -13,6 +13,7 @@
 		E4022AC02B26F10E00E9EC15 /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022ABF2B26F10E00E9EC15 /* IconType.swift */; };
 		E4022AC22B28631800E9EC15 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4022AC12B28631800E9EC15 /* UIColorExtension.swift */; };
 		E4050BB62B29886900487126 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BB52B29886900487126 /* LocationManager.swift */; };
+		E4050BB82B2ECA5800487126 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BB72B2ECA5800487126 /* StringExtension.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		E4022ABF2B26F10E00E9EC15 /* IconType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconType.swift; sourceTree = "<group>"; };
 		E4022AC12B28631800E9EC15 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E4050BB52B29886900487126 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E4050BB72B2ECA5800487126 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				E4022ABD2B2310D000E9EC15 /* DoubleExtension.swift */,
 				E4022AC12B28631800E9EC15 /* UIColorExtension.swift */,
+				E4050BB72B2ECA5800487126 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				E4022AC22B28631800E9EC15 /* UIColorExtension.swift in Sources */,
 				E4A29D9A2B1F177A00A3ED94 /* NetworkManager.swift in Sources */,
 				E4A29D9E2B1F1E1A00A3ED94 /* Weather.swift in Sources */,
+				E4050BB82B2ECA5800487126 /* StringExtension.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
 				E4A29D872B1E218600A3ED94 /* BarButtonActionDelegate.swift in Sources */,
 				E4022AC02B26F10E00E9EC15 /* IconType.swift in Sources */,
