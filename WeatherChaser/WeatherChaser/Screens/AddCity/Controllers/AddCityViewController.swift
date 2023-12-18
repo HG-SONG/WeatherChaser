@@ -50,7 +50,16 @@ class AddCityViewController : UIViewController {
             return
         }
         
-        addCityViewModel.addWeatherCellViewModel(for: cityName, lat: nil, lon: nil) { viewModel in
+        addCityViewModel.addWeatherCellViewModel(for: cityName, lat: nil, lon: nil) { viewModel,error in
+            guard let viewModel = viewModel else {
+                guard let networkError = error as? NetworkError else {
+                    ErrorManager.showAlertForUnknown()
+                    return
+                }
+                ErrorManager.showAlert(error: networkError)
+                return
+            }
+            
             NotificationCenter.default.post(name: NSNotification.Name("UpdateCellNotification"), object: nil, userInfo: ["data": viewModel])
             self.delegate?.saveButtonTouched()
         }

@@ -13,6 +13,7 @@ class WeatherListTableViewController: UITableViewController {
     private var addCityButton : UIBarButtonItem!
     private var settingsButton : UIBarButtonItem!
     private var weatherListViewModel = WeatherListViewModel()
+    private var retryButton = UIButton(frame: .zero)
 
     override init(style: UITableView.Style) {
         super.init(style: style)
@@ -44,6 +45,7 @@ class WeatherListTableViewController: UITableViewController {
     
     private func commonInit() {
         setBarButtons()
+        setRetryButton()
         self.tableView.backgroundColor = .black
         self.tableView.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.identifier)
         requestUserLocation()
@@ -73,7 +75,17 @@ class WeatherListTableViewController: UITableViewController {
             let lat = location.coordinate.latitude.description
             let lon = location.coordinate.longitude.description
             
-            tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel in
+            tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel,error in
+                guard let viewModel = viewModel else {
+                    guard let networkError = error as? NetworkError else {
+                        ErrorManager.showAlertForUnknown()
+                        return
+                    }
+                    ErrorManager.showAlert(error: networkError)
+                    self.showRetryButton()
+                    return
+                }
+                self.hideRetryButton()
                 self.weatherListViewModel.addWeatherCellInViewModel(viewModel)
                 self.tableView.reloadData()
             }
@@ -96,9 +108,8 @@ extension WeatherListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let reversedViewModel = weatherListViewModel.reversed()
-//        print(weatherListViewModel)
-//        let weatherViewModel = reversedViewModel[indexPath.row]
+        self.hideRetryButton()
+        
         let weatherViewModel = self.weatherListViewModel.modelAt(indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as! WeatherCell
         
