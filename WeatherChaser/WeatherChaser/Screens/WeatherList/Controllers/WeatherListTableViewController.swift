@@ -62,11 +62,11 @@ class WeatherListTableViewController: UITableViewController {
     }
     
     @objc private func addCityButtonTouched() {
-        delegate?.addCityButtonTouched?()
+        delegate?.addCityButtonTouched()
     }
     
     @objc private func settingsButtonTouched() {
-        delegate?.settingsButtonTouched?()
+        delegate?.settingsButtonTouched()
     }
     
     private func requestUserLocation() {
