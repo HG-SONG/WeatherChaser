@@ -19,6 +19,11 @@ class AddCityViewModel {
             }
         }
         
+        if weatherURL == nil {
+            ErrorManager.showAlert(error: NetworkError.decodingFailure)
+            return
+        }
+        
         let weatherResource = Resource<WeatherResponse>(url: weatherURL) { data in
             let weatherResponse = try? JSONDecoder().decode(WeatherResponse.self, from: data)
             return weatherResponse
