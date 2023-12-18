@@ -133,7 +133,7 @@ extension WeatherListTableViewController {
     }
     
     private func setRetryButton() {
-        self.retryButton.isHidden = true
+        self.retryButton.isHidden = false
         self.retryButton.titleLabel?.font = UIFont.systemFont(ofSize: 50.0, weight: .bold)
         self.retryButton.setTitle("☛ Retry", for: .normal)
         self.retryButton.addTarget(self, action: #selector(retrybuttonTouched), for: .touchUpInside)
