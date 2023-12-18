@@ -7,11 +7,12 @@
 
 import Foundation
 
-@objc protocol BarButtonActionDelegate {
-    @objc optional func addCityButtonTouched()
-    @objc optional func settingsButtonTouched()
+protocol BarButtonActionDelegate {
+    func addCityButtonTouched()
+    func settingsButtonTouched()
 }
 
 protocol AddCityDelegate {
     func saveButtonTouched()
 }
+
