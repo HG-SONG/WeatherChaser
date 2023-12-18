@@ -12,7 +12,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(NetworkError.offline))
                 return
             }
             
@@ -47,4 +47,5 @@ struct Resource<T> {
 enum NetworkError: Error {
     case noData
     case decodingFailure
+    case offline
 }

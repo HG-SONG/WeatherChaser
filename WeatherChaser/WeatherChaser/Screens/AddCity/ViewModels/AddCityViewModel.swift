@@ -8,7 +8,7 @@
 import Foundation
 
 class AddCityViewModel {
-    func addWeatherCellViewModel(for city: String?, lat:  String?, lon: String?, completion: @escaping (WeatherCellViewModel) -> Void) {
+    func addWeatherCellViewModel(for city: String?, lat:  String?, lon: String?, completion: @escaping (WeatherCellViewModel?,Error?) -> Void) {
         var weatherURL: URL!
         
         if let city = city {
@@ -28,10 +28,10 @@ class AddCityViewModel {
             switch result {
             case .success(let weatherResponse):
                     let viewModel = WeatherCellViewModel(weather: weatherResponse)
-                    completion(viewModel)
+                    completion(viewModel,nil)
 
             case .failure(let error):
-                print("Network request error: \(error)")
+                completion(nil,error)
             }
         }
     }
