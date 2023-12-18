@@ -107,4 +107,37 @@ extension WeatherListTableViewController {
     }
     
 }
-
+// MARK: RetryButton
+extension WeatherListTableViewController {
+    func showRetryButton() {
+        DispatchQueue.main.async {
+            self.retryButton.isHidden = false
+        }
+    }
+    
+    func hideRetryButton() {
+        DispatchQueue.main.async {
+            self.retryButton.isHidden = true
+        }
+    }
+    
+    private func setRetryButton() {
+        self.retryButton.isHidden = true
+        self.retryButton.titleLabel?.font = UIFont.systemFont(ofSize: 50.0, weight: .bold)
+        self.retryButton.setTitle("☛ Retry", for: .normal)
+        self.retryButton.addTarget(self, action: #selector(retrybuttonTouched), for: .touchUpInside)
+        self.view.addSubview(retryButton)
+        
+        self.retryButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                self.retryButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                self.retryButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 50.0)
+            ]
+        )
+    }
+    
+    @objc private func retrybuttonTouched() {
+        requestUserLocation()
+    }
+}
