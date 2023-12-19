@@ -15,6 +15,8 @@
 		E4050BB62B29886900487126 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BB52B29886900487126 /* LocationManager.swift */; };
 		E4050BB82B2ECA5800487126 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BB72B2ECA5800487126 /* StringExtension.swift */; };
 		E4050BBA2B2EDFA600487126 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BB92B2EDFA600487126 /* ErrorManager.swift */; };
+		E4050BBC2B31933E00487126 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BBB2B31933E00487126 /* Unit.swift */; };
+		E4050BBF2B31937300487126 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BBE2B31937300487126 /* SettingsViewModel.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		E4050BB52B29886900487126 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E4050BB72B2ECA5800487126 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E4050BB92B2EDFA600487126 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		E4050BBB2B31933E00487126 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		E4050BBE2B31937300487126 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,8 +122,24 @@
 			children = (
 				E4050BB52B29886900487126 /* LocationManager.swift */,
 				E4050BB92B2EDFA600487126 /* ErrorManager.swift */,
+				E4050BBB2B31933E00487126 /* Unit.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E4050BBD2B31936200487126 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E4050BBE2B31937300487126 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E4050BC02B31950100487126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E4A29D512B1C66F900A3ED94 = {
@@ -278,6 +298,8 @@
 		E4A29D8F2B1F0BC400A3ED94 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E4050BC02B31950100487126 /* Views */,
+				E4050BBD2B31936200487126 /* ViewModels */,
 				E4A29D912B1F0BD900A3ED94 /* Coordinators */,
 				E4A29D902B1F0BD100A3ED94 /* Controllers */,
 			);
@@ -416,6 +438,7 @@
 				E4A29D802B1C77E600A3ED94 /* WeatherListCoordinator.swift in Sources */,
 				E4A29D952B1F0C0400A3ED94 /* SettingsCoordinator.swift in Sources */,
 				E4050BBA2B2EDFA600487126 /* ErrorManager.swift in Sources */,
+				E4050BBC2B31933E00487126 /* Unit.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
 				E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */,
 				E4022AC22B28631800E9EC15 /* UIColorExtension.swift in Sources */,
@@ -439,6 +462,7 @@
 				E4A29D8B2B1E231700A3ED94 /* AddCityCoordinator.swift in Sources */,
 				E4A29D9C2B1F17A400A3ED94 /* URLManager.swift in Sources */,
 				E4A29DA02B1F20F000A3ED94 /* WeatherResponse.swift in Sources */,
+				E4050BBF2B31937300487126 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
