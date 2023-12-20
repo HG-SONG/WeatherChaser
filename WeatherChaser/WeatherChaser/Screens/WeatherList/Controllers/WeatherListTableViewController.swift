@@ -23,7 +23,7 @@ class WeatherListTableViewController: UITableViewController {
     @objc func updateData(_ notification: Notification) {
         if let data = notification.userInfo?["data"] as? WeatherCellViewModel {
             weatherListViewModel.addWeatherCellInViewModel(data)
-        }
+        } // 이거도 pop -> wiilAppear에서 처리할까? 일단 커밋따고 고민해보자. 
         self.tableView.reloadData()
     }
     
@@ -41,6 +41,14 @@ class WeatherListTableViewController: UITableViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         commonInit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        self.weatherListViewModel.updateUnit()
+        self.tableView.reloadData()
     }
     
     private func commonInit() {
@@ -152,3 +160,4 @@ extension WeatherListTableViewController {
         requestUserLocation()
     }
 }
+
