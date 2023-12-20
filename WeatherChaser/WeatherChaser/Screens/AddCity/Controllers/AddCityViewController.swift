@@ -12,7 +12,7 @@ class AddCityViewController : UIViewController {
     private var saveButton : UIBarButtonItem!
     private let cityNameTextField = UITextField(frame: .zero)
     
-    var delegate: AddCityDelegate?
+    var delegate: SaveDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
