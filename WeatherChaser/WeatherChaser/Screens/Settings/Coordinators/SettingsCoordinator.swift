@@ -17,9 +17,15 @@ class SettingsCoordinator: Coordinator {
     func changeViewController() {
         let settingsTableViewController = SettingsTableViewController(nibName: nil, bundle: nil)
         settingsTableViewController.title = "Settings"
-        
+        settingsTableViewController.delegate = self
         self.settingsTableViewController = settingsTableViewController
         self.presenter.pushViewController(settingsTableViewController, animated: true)
     }
     
+}
+
+extension SettingsCoordinator: SaveDelegate {
+    func saveButtonTouched() {
+        presenter.popViewController(animated: true)
+    }
 }
