@@ -107,8 +107,8 @@ class WeatherCell: UITableViewCell {
             [
                 weatherSymbol.heightAnchor.constraint(equalTo: self.nameLabel.heightAnchor),
                 weatherSymbol.widthAnchor.constraint(equalTo: self.weatherSymbol.heightAnchor),
-                weatherSymbol.leadingAnchor.constraint(equalTo: self.temperatureSubStackView.trailingAnchor,constant: 20.0),
-                weatherSymbol.centerYAnchor.constraint(equalTo: self.temperatureSubStackView.centerYAnchor)
+                weatherSymbol.topAnchor.constraint(equalTo: self.updatedAtLabel.bottomAnchor,constant: 5.0),
+                weatherSymbol.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10.0)
             ]
         )
     }
@@ -145,7 +145,7 @@ extension WeatherCell {
     }
     
     private func configureTemperatureLabel(_ viewModel: WeatherCellViewModel) {
-        self.temperatureMainLabel.text = viewModel.temperature
+        self.temperatureMainLabel.text = viewModel.temperature.makeUnitSymbol()
         self.temperatureMainLabel.font = self.temperatureMainLabel.font.withSize(80.0)
     }
     
@@ -172,9 +172,9 @@ extension WeatherCell {
     private func configureTemperatureSubStackView(_ viewModel: WeatherCellViewModel){
         self.temperatureSubStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
-        let max = "Max • " + viewModel.maxTemperature
-        let feelsLike = "Feels like • " + viewModel.feelsLikeTemperature
-        let min = "Min • " + viewModel.minTemperature
+        let max = "Max • " + viewModel.maxTemperature.makeUnitSymbol()
+        let feelsLike = "Feels like • " + viewModel.feelsLikeTemperature.makeUnitSymbol()
+        let min = "Min • " + viewModel.minTemperature.makeUnitSymbol()
         
         let maxLabel = makeLabel(text: max, fontColor: .maxTemp)
         let feelsLikeLabel = makeLabel(text: feelsLike, fontColor: .feelsTemp)
