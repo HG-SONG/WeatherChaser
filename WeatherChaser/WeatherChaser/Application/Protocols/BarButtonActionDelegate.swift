@@ -12,7 +12,6 @@ protocol BarButtonActionDelegate {
     func settingsButtonTouched()
 }
 
-protocol AddCityDelegate {
+protocol SaveDelegate {
     func saveButtonTouched()
 }
-

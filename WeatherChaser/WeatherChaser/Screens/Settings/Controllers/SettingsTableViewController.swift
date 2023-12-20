@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsTableViewController : UITableViewController {
     
+    var delegate : SaveDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
