@@ -9,6 +9,7 @@ import Foundation
 
 class WeatherListViewModel {
     private var weatherCellViewModels : [WeatherCellViewModel] = []
+    private var lastSelectedUnit : Unit.RawValue = UserDefaults.standard.value(forKey: "selected") as! Unit.RawValue
     
     func numberOfRows(_ section: Int?) -> Int {
         return weatherCellViewModels.count
