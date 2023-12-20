@@ -24,7 +24,7 @@ class AddCityCoordinator : Coordinator {
     }
 }
 
-extension AddCityCoordinator: AddCityDelegate {
+extension AddCityCoordinator: SaveDelegate {
     func saveButtonTouched() {
         presenter.popViewController(animated: true)
     }
