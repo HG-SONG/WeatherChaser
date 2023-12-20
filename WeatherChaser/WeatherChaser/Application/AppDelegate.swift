@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = UserDefaults.standard
         if userDefaults.value(forKey: "unit") == nil {
             userDefaults.set("metric", forKey: "unit")
+            userDefaults.set("metric", forKey: "selected")
         }
     }
 }
