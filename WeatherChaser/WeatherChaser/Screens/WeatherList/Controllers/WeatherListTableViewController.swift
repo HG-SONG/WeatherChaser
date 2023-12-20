@@ -14,7 +14,7 @@ class WeatherListTableViewController: UITableViewController {
     private var settingsButton : UIBarButtonItem!
     private var weatherListViewModel = WeatherListViewModel()
     private var retryButton = UIButton(frame: .zero)
-
+    
     override init(style: UITableView.Style) {
         super.init(style: style)
         NotificationCenter.default.addObserver(self, selector: #selector(updateData(_:)), name: NSNotification.Name("UpdateCellNotification"), object: nil)
