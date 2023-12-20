@@ -11,7 +11,7 @@ class NetworkManager {
     func fetch<T>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> ()) {
         
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
-            if let error = error {
+            if error != nil {
                 completion(.failure(NetworkError.offline))
                 return
             }
