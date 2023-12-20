@@ -17,11 +17,8 @@ class WeatherListCoordinator: Coordinator {
     }
     
     func changeViewController() {
-//        let weatherListTableViewController = WeatherListTableViewController(cellViewModel: nil)
         self.weatherListTableViewController.title = "Weather List"
         self.weatherListTableViewController.delegate = self
-        
-//        self.weatherListTableViewController = weatherListTableViewController
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
     

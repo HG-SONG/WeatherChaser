@@ -89,6 +89,4 @@ class WeatherCellViewModel {
         let formattedDate = dateFormatter.string(from: date)
         return formattedDate
     }
-    
-    
 }
