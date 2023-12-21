@@ -32,7 +32,6 @@ class WeatherListCoordinator: Coordinator {
         self.weatherListTableViewController.addCity(cellViewModel: viewModel)
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
-    
 }
 
 extension WeatherListCoordinator : CoordinatorDelegate {

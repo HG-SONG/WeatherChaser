@@ -14,28 +14,16 @@ class WeatherListTableViewController: UITableViewController {
     private var settingsButton : UIBarButtonItem!
     private var weatherListViewModel = WeatherListViewModel()
     private var retryButton = UIButton(frame: .zero)
+    var delegate: CoordinatorDelegate?
     
     override init(style: UITableView.Style) {
         super.init(style: style)
         NotificationCenter.default.addObserver(self, selector: #selector(updateData(_:)), name: NSNotification.Name("UpdateCellNotification"), object: nil)
     }
     
-    @objc func updateData(_ notification: Notification) {
-        if let data = notification.userInfo?["data"] as? WeatherCellViewModel {
-            weatherListViewModel.addWeatherCellInViewModel(data)
-        } // 이거도 pop -> wiilAppear에서 처리할까? 일단 커밋따고 고민해보자. 
-        self.tableView.reloadData()
-    }
-    
-    func addCity(cellViewModel: WeatherCellViewModel) {
-        self.weatherListViewModel.addWeatherCellInViewModel(cellViewModel)
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    var delegate: CoordinatorDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +63,17 @@ class WeatherListTableViewController: UITableViewController {
     
     @objc private func settingsButtonTouched() {
         delegate?.settingsButtonTouched()
+    }
+    
+    @objc func updateData(_ notification: Notification) {
+        if let data = notification.userInfo?["data"] as? WeatherCellViewModel {
+            weatherListViewModel.addWeatherCellInViewModel(data)
+        } // 이거도 pop -> wiilAppear에서 처리할까? 일단 커밋따고 고민해보자.
+        self.tableView.reloadData()
+    }
+    
+    func addCity(cellViewModel: WeatherCellViewModel) {
+        self.weatherListViewModel.addWeatherCellInViewModel(cellViewModel)
     }
     
     private func requestUserLocation() {

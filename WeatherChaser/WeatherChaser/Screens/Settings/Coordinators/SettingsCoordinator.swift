@@ -14,6 +14,7 @@ class SettingsCoordinator: Coordinator {
     init(presenter: UINavigationController) {
         self.presenter = presenter
     }
+    
     func changeViewController() {
         let settingsTableViewController = SettingsTableViewController(nibName: nil, bundle: nil)
         settingsTableViewController.title = "Settings"
