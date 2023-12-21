@@ -17,6 +17,7 @@ class WeatherDetailCoordinator: Coordinator {
     
     func changeViewController() {
         let weatherDetailViewController = WeatherDetailViewController(nibName: nil, bundle: nil)
+        weatherDetailViewController.title = "View in detail"
         self.presenter.pushViewController(weatherDetailViewController, animated: true)
     }
     
