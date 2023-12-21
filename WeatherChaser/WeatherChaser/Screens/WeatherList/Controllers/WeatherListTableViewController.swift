@@ -35,7 +35,7 @@ class WeatherListTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     
-    var delegate: BarButtonActionDelegate?
+    var delegate: CoordinatorDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +123,10 @@ extension WeatherListTableViewController {
         
         cell.commonInit(weatherViewModel)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.weatherCellTouched()
     }
     
 }
