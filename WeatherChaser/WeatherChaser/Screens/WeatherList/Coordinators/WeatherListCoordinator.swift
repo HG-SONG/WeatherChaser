@@ -35,7 +35,7 @@ class WeatherListCoordinator: Coordinator {
     
 }
 
-extension WeatherListCoordinator : BarButtonActionDelegate {
+extension WeatherListCoordinator : CoordinatorDelegate {
     func addCityButtonTouched() {
         let addCityCoordinator = AddCityCoordinator(presenter: self.presenter)
         
@@ -45,5 +45,10 @@ extension WeatherListCoordinator : BarButtonActionDelegate {
     func settingsButtonTouched() {
         let settingsCoordinator = SettingsCoordinator(presenter: self.presenter)
         settingsCoordinator.changeViewController()
+    }
+    
+    func weatherCellTouched() {
+        let weatherDetailCoordinator = WeatherDetailCoordinator(presenter: self.presenter)
+        weatherDetailCoordinator.changeViewController()
     }
 }
