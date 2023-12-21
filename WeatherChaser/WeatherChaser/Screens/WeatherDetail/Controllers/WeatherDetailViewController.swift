@@ -17,45 +17,51 @@ class WeatherDetailViewController : UIViewController {
     }
     
     private func makeCollectionView() {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
-            print(sectionIndex)
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex,_) -> NSCollectionLayoutSection? in
+
             return self.createSection(for: sectionIndex)
         }
-
+        
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         self.collectionView!.delegate = self
         self.collectionView!.dataSource = self
-        self.collectionView!.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.identifier)
         self.collectionView!.backgroundColor = .black
+        registerCells()
         view.addSubview(collectionView!)
+    }
+    
+    private func registerCells() {
+        self.collectionView!.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.identifier)
     }
 }
 
+// MARK: Configure Compositional Layout
 extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-                case 0:
-                    return 2
-                case 1:
-                    return 1
-                case 2:
-                    return 4
-                case 3:
-                    return 1
-                default:
-                    return 0
-                }
+        case 0:
+            return 2
+        case 1:
+            return 1
+        case 2:
+            return 4
+        case 3:
+            return 1
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCell.identifier, for: indexPath) as? TestCollectionViewCell else {
             return UICollectionViewCell(frame: .zero)
         }
-        cell.setTitleLabel(text: indexPath.description)
+        cell.setTitleLabel(text: "DWDKOQWDKQOWDKOPQWDKASDASDASD")
         return cell
     }
     
