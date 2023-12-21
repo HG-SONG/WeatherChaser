@@ -7,9 +7,10 @@
 
 import Foundation
 
-protocol BarButtonActionDelegate {
+protocol CoordinatorDelegate {
     func addCityButtonTouched()
     func settingsButtonTouched()
+    func weatherCellTouched()
 }
 
 protocol SaveDelegate {
