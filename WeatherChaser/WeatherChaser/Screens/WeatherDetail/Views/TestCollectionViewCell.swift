@@ -28,6 +28,7 @@ class TestCollectionViewCell: UICollectionViewCell {
     
     func setTitleLabel(text:String) {
         self.titleLabel.text = text
+        self.titleLabel.numberOfLines = 3
     }
     
     private func layoutTitleLabel() {
@@ -39,7 +40,10 @@ class TestCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(
             [
                 titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-                titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+                titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+                titleLabel.widthAnchor.constraint(lessThanOrEqualTo: self.contentView.widthAnchor),
+                titleLabel.heightAnchor.constraint(lessThanOrEqualTo: self.contentView.heightAnchor)
+                
             ]
         )
     }
