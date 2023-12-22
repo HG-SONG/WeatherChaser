@@ -46,7 +46,7 @@ extension WeatherListCoordinator : CoordinatorDelegate {
         settingsCoordinator.changeViewController()
     }
     
-    func weatherCellTouched() {
+    func weatherCellTouched(at indexPath: IndexPath) {
         let weatherDetailCoordinator = WeatherDetailCoordinator(presenter: self.presenter)
         weatherDetailCoordinator.changeViewController()
     }
