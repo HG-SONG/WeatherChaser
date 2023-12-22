@@ -22,8 +22,8 @@ class WeatherListCoordinator: Coordinator {
         self.presenter.pushViewController(weatherListTableViewController, animated: true)
     }
     
-    func changeViewController(with viewModel: Any) {
-        guard let viewModel = viewModel as? WeatherCellViewModel else {
+    func changeViewController(with something: Any) {
+        guard let viewModel = something as? WeatherCellViewModel else {
             return
         }
         self.weatherListTableViewController.title = "Weather List"
@@ -48,6 +48,6 @@ extension WeatherListCoordinator : CoordinatorDelegate {
     
     func weatherCellTouched(at indexPath: IndexPath) {
         let weatherDetailCoordinator = WeatherDetailCoordinator(presenter: self.presenter)
-        weatherDetailCoordinator.changeViewController()
+        weatherDetailCoordinator.changeViewController(with: indexPath)
     }
 }
