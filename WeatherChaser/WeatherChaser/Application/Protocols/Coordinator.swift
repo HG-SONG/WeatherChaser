@@ -8,6 +8,6 @@
 import Foundation
 
 @objc protocol Coordinator {
-    func changeViewController()
-    @objc optional func changeViewController(with viewModel: Any)
+    @objc optional func changeViewController()
+    @objc optional func changeViewController(with something: Any)
 }
