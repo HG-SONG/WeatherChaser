@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherDetailViewController : UIViewController {
     private var collectionView : UICollectionView?
+    private var weatherDetailViewModel = WeatherDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,11 @@ class WeatherDetailViewController : UIViewController {
     
     private func registerCells() {
         self.collectionView!.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.identifier)
+    }
+    
+    func setupViewModel(_ cellSummary : [String]) {
+        self.weatherDetailViewModel.setupTopSectionViewModel(cellSummary)
+        self.weatherDetailViewModel.fetchWeatherDetail()
     }
 }
 
@@ -58,10 +64,17 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var text = indexPath.description
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCell.identifier, for: indexPath) as? TestCollectionViewCell else {
             return UICollectionViewCell(frame: .zero)
         }
-        cell.setTitleLabel(text: "DWDKOQWDKQOWDKOPQWDKASDASDASD")
+        
+        if let title = self.weatherDetailViewModel.modelAt(indexPath)?.title {
+            text = title
+        }
+        
+        cell.setTitleLabel(text: text)
         return cell
     }
     
