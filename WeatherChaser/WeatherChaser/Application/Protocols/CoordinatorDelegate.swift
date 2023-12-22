@@ -10,7 +10,7 @@ import Foundation
 protocol CoordinatorDelegate {
     func addCityButtonTouched()
     func settingsButtonTouched()
-    func weatherCellTouched()
+    func weatherCellTouched(at indexPath : IndexPath)
 }
 
 protocol SaveDelegate {

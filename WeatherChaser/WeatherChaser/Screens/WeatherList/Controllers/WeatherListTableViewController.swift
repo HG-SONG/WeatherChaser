@@ -125,7 +125,7 @@ extension WeatherListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.weatherCellTouched()
+        delegate?.weatherCellTouched(at:indexPath)
     }
     
 }
