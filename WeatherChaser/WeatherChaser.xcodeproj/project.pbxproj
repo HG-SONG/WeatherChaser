@@ -20,6 +20,8 @@
 		E4050BDA2B341FFD00487126 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BD92B341FFD00487126 /* WeatherDetailViewController.swift */; };
 		E4050BDC2B34200E00487126 /* WeatherDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4050BDB2B34200E00487126 /* WeatherDetailCoordinator.swift */; };
 		E483418F2B342E5600C2ABD6 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483418E2B342E5600C2ABD6 /* TestCollectionViewCell.swift */; };
+		E48341922B3580DB00C2ABD6 /* WeatherDetailVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341912B3580DB00C2ABD6 /* WeatherDetailVieModel.swift */; };
+		E48341962B35856600C2ABD6 /* LabelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341952B35856600C2ABD6 /* LabelCellViewModel.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		E4050BD92B341FFD00487126 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		E4050BDB2B34200E00487126 /* WeatherDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailCoordinator.swift; sourceTree = "<group>"; };
 		E483418E2B342E5600C2ABD6 /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
+		E48341912B3580DB00C2ABD6 /* WeatherDetailVieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailVieModel.swift; sourceTree = "<group>"; };
+		E48341952B35856600C2ABD6 /* LabelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCellViewModel.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		E4050BD82B341FE400487126 /* WeatherDetail */ = {
 			isa = PBXGroup;
 			children = (
+				E48341902B3580C700C2ABD6 /* ViewModels */,
 				E483418B2B342D1B00C2ABD6 /* Views */,
 				E483418A2B3422D900C2ABD6 /* Controllers */,
 				E48341892B3422D200C2ABD6 /* Coordinators */,
@@ -180,6 +185,15 @@
 				E483418E2B342E5600C2ABD6 /* TestCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E48341902B3580C700C2ABD6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E48341912B3580DB00C2ABD6 /* WeatherDetailVieModel.swift */,
+				E48341952B35856600C2ABD6 /* LabelCellViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E4A29D512B1C66F900A3ED94 = {
@@ -490,8 +504,10 @@
 				E4050BDA2B341FFD00487126 /* WeatherDetailViewController.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
 				E4A29D872B1E218600A3ED94 /* CoordinatorDelegate.swift in Sources */,
+				E48341922B3580DB00C2ABD6 /* WeatherDetailVieModel.swift in Sources */,
 				E4022AC02B26F10E00E9EC15 /* IconType.swift in Sources */,
 				E4A29D932B1F0BF300A3ED94 /* SettingsTableViewController.swift in Sources */,
+				E48341962B35856600C2ABD6 /* LabelCellViewModel.swift in Sources */,
 				E4A29D762B1C6BFE00A3ED94 /* Coordinator.swift in Sources */,
 				E4A29D832B1DC6AC00A3ED94 /* WeatherListViewModel.swift in Sources */,
 				E4A29D8E2B1E233400A3ED94 /* AddCityViewController.swift in Sources */,
