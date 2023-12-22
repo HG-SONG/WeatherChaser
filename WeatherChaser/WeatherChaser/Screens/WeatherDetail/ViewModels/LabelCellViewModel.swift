@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+class LabelCellViewModel {
+    
+    var title : String
+    
+    init(title: String) {
+        self.title = title
+    }
+}
