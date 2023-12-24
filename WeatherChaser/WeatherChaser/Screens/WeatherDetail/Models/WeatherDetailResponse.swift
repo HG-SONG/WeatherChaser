@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct WeatherDetailResponse {
+struct WeatherDetailResponse: Codable {
     let cnt : Int
     let list : [WeatherDetail]
-    
 }
 
