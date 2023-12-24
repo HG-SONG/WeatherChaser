@@ -29,7 +29,7 @@ class AddCityViewModel {
             return weatherResponse
         }
         
-        NetworkManager().fetch(resource: weatherResource) { (result) in
+        NetworkManager.fetch(resource: weatherResource) { (result) in
             switch result {
             case .success(let weatherResponse):
                     let viewModel = WeatherCellViewModel(weather: weatherResponse)
