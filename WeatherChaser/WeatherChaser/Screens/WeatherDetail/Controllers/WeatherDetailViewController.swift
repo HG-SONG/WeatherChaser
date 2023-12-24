@@ -70,8 +70,8 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell(frame: .zero)
         }
         
-        if let title = self.weatherDetailViewModel.modelAt(indexPath)?.title {
-            text = title
+        if let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() {
+            text = viewModel.first ?? "Error"
         }
         
         cell.setTitleLabel(text: text)
