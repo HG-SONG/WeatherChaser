@@ -31,8 +31,22 @@ class WeatherDetailViewModel {
         self.sectionOneViewModel = descriptionCellViewModel
     }
     
-    func fetchWeatherDetail(){
-        //GET요청
+    func fetchWeatherDetail(of city: String){
+        let weatherDetailURL = URLManager.setURLforWeatherDetail(of: city)
+        
+        let weatherDetailResource = Resource<WeatherDetailResponse>(url: weatherDetailURL) { data in
+            let weatherDetailResponse = try? JSONDecoder().decode(WeatherDetailResponse.self, from: data)
+            return weatherDetailResponse
+        }
+        
+        NetworkManager.fetch(resource: weatherDetailResource) { (result) in
+            switch result {
+            case .success(let weatherDetailResponse) :
+                print(weatherDetailResponse)
+            case .failure(let error) :
+                print(error)
+            }
+        }
     }
     
     func modelAt(_ indexPath : IndexPath) -> WeatherDetailViewModelBySection?{

@@ -37,7 +37,7 @@ class WeatherDetailViewController : UIViewController {
     
     func setupViewModel(_ cellSummary : WeatherCellViewModel) {
         self.weatherDetailViewModel.setupTopSectionViewModel(cellSummary)
-        self.weatherDetailViewModel.fetchWeatherDetail()
+        self.weatherDetailViewModel.fetchWeatherDetail(of: cellSummary.city)
     }
 }
 
