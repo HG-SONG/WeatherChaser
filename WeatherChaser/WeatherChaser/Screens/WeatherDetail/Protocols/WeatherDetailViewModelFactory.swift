@@ -13,4 +13,5 @@ protocol WeatherDetailViewModelFactory {
 
 protocol WeatherDetailViewModelBySection {
     func setViewModel(with something: Any?)
+    func getViewModel() -> [String]
 }
