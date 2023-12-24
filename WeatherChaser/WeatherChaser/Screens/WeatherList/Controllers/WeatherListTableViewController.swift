@@ -99,15 +99,9 @@ class WeatherListTableViewController: UITableViewController {
         }
     }
     
-    func pullCellData(at indexPath :IndexPath) -> [String] {
-        var result = [String]()
+    func pullCellData(at indexPath :IndexPath) -> WeatherCellViewModel {
         let touchedCell = self.weatherListViewModel.modelAt(indexPath.row)
-        
-        result.append(touchedCell.city)
-        result.append(touchedCell.temperature)
-        result.append(touchedCell.weather.weather.first!.description)
-        
-        return result
+        return touchedCell
     }
 }
 

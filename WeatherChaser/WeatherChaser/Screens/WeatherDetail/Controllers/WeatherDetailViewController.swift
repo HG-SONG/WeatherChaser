@@ -35,7 +35,7 @@ class WeatherDetailViewController : UIViewController {
         self.collectionView!.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.identifier)
     }
     
-    func setupViewModel(_ cellSummary : [String]) {
+    func setupViewModel(_ cellSummary : WeatherCellViewModel) {
         self.weatherDetailViewModel.setupTopSectionViewModel(cellSummary)
         self.weatherDetailViewModel.fetchWeatherDetail()
     }
