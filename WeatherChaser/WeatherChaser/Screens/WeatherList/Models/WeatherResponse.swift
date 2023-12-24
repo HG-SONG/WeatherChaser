@@ -13,6 +13,9 @@ struct WeatherResponse: Codable {
     let name: String
     let dt: Int
     let sys: SunSetAndRise
+    let clouds : Clouds
+    let wind : Wind
+    let rain : Rain?
 }
 
 struct SunSetAndRise: Codable {
