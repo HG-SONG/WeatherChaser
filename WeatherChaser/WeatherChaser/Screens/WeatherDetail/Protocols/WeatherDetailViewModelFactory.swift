@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol WeatherDetailViewModelFactory {
+    static func makeCellViewModel(at section : Int) -> WeatherDetailViewModelBySection
+}
+
 protocol WeatherDetailViewModelBySection {
     func setViewModel(with something: Any?)
 }
