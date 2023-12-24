@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkManager {
-    func fetch<T>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> ()) {
+    static func fetch<T>(resource: Resource<T>, completion: @escaping (Result<T, Error>) -> ()) {
         
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
             if error != nil {
