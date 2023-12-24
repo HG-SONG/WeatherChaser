@@ -8,24 +8,34 @@
 import Foundation
 
 class WeatherDetailViewModel {
-    private var sectionZeroViewModel = [LabelCellViewModel]()
-    private var sectionOneViewModel = LabelCellViewModel(title: "")
+    private var sectionZeroViewModel = [WeatherDetailViewModelBySection?]()
+    private var sectionOneViewModel : WeatherDetailViewModelBySection?
+    private var sectionTwoViewModel : WeatherDetailViewModelBySection?
     
-    func setupTopSectionViewModel(_ cellSummary : [String]) {
-        let cityName = cellSummary[0]
-        let currentTemperature = cellSummary[1]
-        let description = cellSummary[2]
+    func setupTopSectionViewModel(_ cellSummary : WeatherCellViewModel) {
+        let cityName = cellSummary.city
+        let currentTemperature = cellSummary.temperature
+        let description = cellSummary.weather.weather.first!.description
         
-        self.sectionZeroViewModel.append(LabelCellViewModel(title: cityName))
-        self.sectionZeroViewModel.append(LabelCellViewModel(title: currentTemperature))
-        self.sectionOneViewModel.title = description
+        let nameCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
+        nameCellViewModel.setViewModel(with: cityName)
+        
+        let currentTempCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
+        currentTempCellViewModel.setViewModel(with: currentTemperature)
+        
+        let descriptionCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 1)
+        descriptionCellViewModel.setViewModel(with: description)
+        
+        self.sectionZeroViewModel.append(nameCellViewModel)
+        self.sectionZeroViewModel.append(currentTempCellViewModel)
+        self.sectionOneViewModel = descriptionCellViewModel
     }
     
     func fetchWeatherDetail(){
         //GET요청
     }
     
-    func modelAt(_ indexPath : IndexPath) -> LabelCellViewModel?{
+    func modelAt(_ indexPath : IndexPath) -> WeatherDetailViewModelBySection?{
         switch indexPath.section {
         case 0:
             return self.sectionZeroViewModel[indexPath.item]
