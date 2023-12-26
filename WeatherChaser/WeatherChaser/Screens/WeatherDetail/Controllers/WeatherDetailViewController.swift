@@ -65,17 +65,20 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var text = indexPath.description
+        var cell : UICollectionViewCell
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCell.identifier, for: indexPath) as? TestCollectionViewCell else {
-            return UICollectionViewCell(frame: .zero)
+        switch indexPath.section {
+        case 0 :
+            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath)
+        case 1 :
+            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath)
+        case 2 :
+            cell = setSectionTwo(collectionView: collectionView, indexPath: indexPath)
+        case 3 :
+            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath) //임시
+        default :
+            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath) //임시
         }
-        
-        if let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() {
-            text = viewModel.first ?? "Error"
-        }
-        
-        cell.setTitleLabel(text: text)
         return cell
     }
     
@@ -128,4 +131,41 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         section.orthogonalScrollingBehavior = .continuous
         return section
     }
+}
+
+// MARK: Apply ViewModel By Section
+
+extension WeatherDetailViewController {
+    private func setSectionZeroAndOne(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        var text = ""
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelCell.identifier, for: indexPath) as? LabelCell else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        
+        if let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() {
+            text = viewModel.first ?? "Error"
+        }
+        
+        cell.setTitleLabel(text: text)
+        return cell
+    }
+    
+    private func setSectionTwo(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as? ImageCell else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        
+        guard let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        
+        cell.setImageView(viewModel: viewModel)
+        return cell
+    }
+    
+//    private func setSectionThree(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+//
+//    }
 }
