@@ -34,7 +34,7 @@ class WeatherDetailViewModel {
         NetworkManager.fetch(resource: weatherDetailResource) { (result) in
             switch result {
             case .success(let weatherDetailResponse) :
-                print(weatherDetailResponse)
+                self.setSectionThree(with: weatherDetailResponse)
             case .failure(let error) :
                 print(error)
             }
