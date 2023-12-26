@@ -31,7 +31,7 @@ class WeatherDetailViewModel {
         self.sectionOneViewModel = descriptionCellViewModel
     }
     
-    func fetchWeatherDetail(of city: String){
+    func setupLowerSectionWithFetching(of city: String){
         let weatherDetailURL = URLManager.setURLforWeatherDetail(of: city)
         
         let weatherDetailResource = Resource<WeatherDetailResponse>(url: weatherDetailURL) { data in
