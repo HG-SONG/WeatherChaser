@@ -10,7 +10,7 @@ import Foundation
 class WeatherDetailViewModel {
     private var sectionZeroViewModel = [WeatherDetailViewModelBySection?]()
     private var sectionOneViewModel : WeatherDetailViewModelBySection?
-    private var sectionTwoViewModel : WeatherDetailViewModelBySection?
+    private var sectionTwoViewModel = [WeatherDetailViewModelBySection?]()
     
     func setupUpperSectionViewModel(_ cellSummary : WeatherCellViewModel) {
         let cityName = cellSummary.city
