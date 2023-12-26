@@ -13,6 +13,6 @@ extension Double {
     }
     
     func formatAsAmount() -> String {
-            return String(format: "%.2f", self)
-        }
+        return String(format: "%.2f", self)
+    }
 }
