@@ -28,6 +28,46 @@ class ImageCell: UICollectionViewCell {
         layoutTextStackView()
     }
     
+    func setImageView(viewModel : [String]) {
+        let title = viewModel[0]
+        
+        let imageName = viewModel[1]
+        
+        setTitleLabel(text: title)
+        setBackgroundView(imageName: imageName)
+        setTextStackView(viewModel)
+        
+    }
+    
+    private func setBackgroundView(imageName :String) {
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        
+        self.backgroundView = imageView
+        self.backgroundView?.layer.cornerRadius = 15.0
+    }
+    
+    private func setTitleLabel(text:String) {
+        self.titleLabel.text = text
+        self.titleLabel.font = UIFont.systemFont(ofSize: 20.0)
+    }
+    
+    private func setTextStackView(_ array : [String]) {
+        self.textStackView.axis = .vertical
+        self.textStackView.alignment = .center
+        let startIndex = 2
+        let items = array[startIndex...]
+        
+        for item in items {
+            let label = UILabel(frame: .zero)
+            label.text = item
+            label.numberOfLines = 2
+            label.font = UIFont.systemFont(ofSize: 35.0, weight: .bold)
+            self.textStackView.addArrangedSubview(label)
+        }
+    }
     
     private func layoutTextStackView() {
         if !self.contentView.subviews.contains(textStackView) {
