@@ -32,12 +32,13 @@ class WeatherDetailViewController : UIViewController {
     }
     
     private func registerCells() {
-        self.collectionView!.register(TestCollectionViewCell.self, forCellWithReuseIdentifier: TestCollectionViewCell.identifier)
+        self.collectionView!.register(LabelCell.self, forCellWithReuseIdentifier: LabelCell.identifier)
+        self.collectionView!.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.identifier)
     }
     
     func setupViewModel(_ cellSummary : WeatherCellViewModel) {
-        self.weatherDetailViewModel.setupTopSectionViewModel(cellSummary)
-        self.weatherDetailViewModel.fetchWeatherDetail(of: cellSummary.city)
+        self.weatherDetailViewModel.setupUpperSectionViewModel(cellSummary)
+        self.weatherDetailViewModel.setupLowerSectionWithFetching(of: cellSummary.city)
     }
 }
 
