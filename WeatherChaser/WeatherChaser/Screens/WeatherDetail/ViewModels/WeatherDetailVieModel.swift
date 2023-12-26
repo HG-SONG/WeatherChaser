@@ -17,18 +17,10 @@ class WeatherDetailViewModel {
         let currentTemperature = cellSummary.temperature
         let description = cellSummary.weather.weather.first!.description
         
-        let nameCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
-        nameCellViewModel.setViewModel(with: cityName)
-        
-        let currentTempCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
-        currentTempCellViewModel.setViewModel(with: currentTemperature)
-        
-        let descriptionCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 1)
-        descriptionCellViewModel.setViewModel(with: description)
-        
-        self.sectionZeroViewModel.append(nameCellViewModel)
-        self.sectionZeroViewModel.append(currentTempCellViewModel)
-        self.sectionOneViewModel = descriptionCellViewModel
+        setupNameCellViewModel(cityName)
+        setupCurrentTempCellViewModel(currentTemperature)
+        setupDescriptionCellViewModel(description)
+        setupImageCellViewModel(cellSummary)
     }
     
     func setupLowerSectionWithFetching(of city: String){
@@ -56,12 +48,63 @@ class WeatherDetailViewModel {
         case 1:
             return self.sectionOneViewModel
         case 2:
-            return nil
+            return self.sectionTwoViewModel[indexPath.item]
         case 3:
             return nil
         default:
             return nil
         }
+    }
+    
+    private func setSectionThree(with fetchedData : WeatherDetailResponse) {
+        
+    }
+    
+    private func setupNameCellViewModel(_ cityName: String) {
+        let nameCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
+        nameCellViewModel.setViewModel(with: cityName)
+        self.sectionZeroViewModel.append(nameCellViewModel)
+    }
+
+    private func setupCurrentTempCellViewModel(_ currentTemperature: String) {
+        let currentTempCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
+        currentTempCellViewModel.setViewModel(with: currentTemperature)
+        self.sectionZeroViewModel.append(currentTempCellViewModel)
+    }
+
+    private func setupDescriptionCellViewModel(_ description: String) {
+        let descriptionCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 1)
+        descriptionCellViewModel.setViewModel(with: description)
+        self.sectionOneViewModel = descriptionCellViewModel
+    }
+    
+    private func setupImageCellViewModel(_ cellSummary : WeatherCellViewModel) {
+        let wind = cellSummary.weather.wind
+        let clouds = cellSummary.weather.clouds
+        let sunriseAndSet = cellSummary.weather.sys
+        var rain : Rain
+        if cellSummary.weather.rain == nil {
+            rain = Rain(amount: .zero)
+        } else {
+            rain = cellSummary.weather.rain!
+        }
+        
+        let rainCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
+        rainCellViewModel.setViewModel(with: rain)
+        self.sectionTwoViewModel.append(rainCellViewModel)
+        
+        let cloudsCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
+        cloudsCellViewModel.setViewModel(with: clouds)
+        self.sectionTwoViewModel.append(cloudsCellViewModel)
+        
+        let windCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
+        windCellViewModel.setViewModel(with: wind)
+        self.sectionTwoViewModel.append(windCellViewModel)
+        
+        let sunCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
+        sunCellViewModel.setViewModel(with: sunriseAndSet)
+        self.sectionTwoViewModel.append(sunCellViewModel)
+        
     }
 }
 
