@@ -13,7 +13,7 @@ class WeatherDetailViewModelCreator : WeatherDetailViewModelFactory {
         case 0,1 :
             return LabelCellViewModel()
         case 2 :
-            return LabelCellViewModel() // 임시
+            return ImageCellViewModel() 
         case 3 :
             return LabelCellViewModel() // 임시
         default :
