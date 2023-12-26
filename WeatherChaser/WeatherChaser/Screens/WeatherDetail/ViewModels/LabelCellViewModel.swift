@@ -8,17 +8,17 @@
 import Foundation
 
 class LabelCellViewModel : WeatherDetailViewModelBySection {
-    private var title : String = ""
+    private var text : String = ""
     
     func setViewModel(with something: Any?) {
         guard let cityName = something as? String else {
-            self.title = "unknown"
+            self.text = "unknown"
             return
         }
-        self.title = cityName
+        self.text = cityName
     }
     
     func getViewModel() -> [String] {
-        return [title]
+        return [text]
     }
 }
