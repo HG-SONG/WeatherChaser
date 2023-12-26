@@ -7,18 +7,18 @@
 
 import UIKit
 
-class TestCollectionViewCell: UICollectionViewCell {
-    static let identifier = "testCell"
+class LabelCell: UICollectionViewCell {
+    static let identifier = "LabelCell"
     private var titleLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = .red
+        self.contentView.backgroundColor = .black
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.contentView.backgroundColor = .red
+        self.contentView.backgroundColor = .black
     }
     
     override func layoutSubviews() {
@@ -27,7 +27,13 @@ class TestCollectionViewCell: UICollectionViewCell {
     }
     
     func setTitleLabel(text:String) {
-        self.titleLabel.text = text
+        if Int(text) != nil {
+            self.titleLabel.text = text.makeUnitSymbol()
+        } else {
+            self.titleLabel.text = text
+        }
+
+        self.titleLabel.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
         self.titleLabel.numberOfLines = 3
     }
     
