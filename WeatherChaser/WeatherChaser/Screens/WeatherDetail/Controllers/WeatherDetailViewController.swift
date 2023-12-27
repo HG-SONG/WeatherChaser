@@ -148,7 +148,7 @@ extension WeatherDetailViewController {
             return UICollectionViewCell(frame: .zero)
         }
         
-        if let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() {
+        if let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModelAsString?() {
             text = viewModel.first ?? "Error"
         }
         
@@ -162,7 +162,7 @@ extension WeatherDetailViewController {
             return UICollectionViewCell(frame: .zero)
         }
         
-        guard let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModel() else {
+        guard let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModelAsString?() else {
             return UICollectionViewCell(frame: .zero)
         }
         

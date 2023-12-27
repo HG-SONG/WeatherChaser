@@ -41,7 +41,7 @@ class ImageCellViewModel: WeatherDetailViewModelBySection {
         }
     }
     
-    func getViewModel() -> [String] {
+    func getViewModelAsString() -> [String] {
         var array = [title,imageName]
         
         for item in texts {

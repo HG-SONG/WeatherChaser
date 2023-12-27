@@ -18,7 +18,7 @@ class LabelCellViewModel : WeatherDetailViewModelBySection {
         self.text = cityName
     }
     
-    func getViewModel() -> [String] {
+    func getViewModelAsString() -> [String] {
         return [text]
     }
 }
