@@ -11,8 +11,6 @@ struct WeatherDetail : Codable {
     let dt : Int
     let main : Weather
     let weather : [WeatherDesc]
-    let clouds : Clouds
-    let wind : Wind
     let pop : Double
     let rain : Rain?
     let snow : Snow?

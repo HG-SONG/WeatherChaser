@@ -86,13 +86,13 @@ class WeatherDetailViewModel {
         var snow : Snow
         
         if cellSummary.weather.rain == nil {
-            rain = Rain(amount: .zero)
+            rain = Rain(amountFor1h: .zero, amountFor3h: .zero)
         } else {
             rain = cellSummary.weather.rain!
         }
         
         if cellSummary.weather.snow == nil {
-            snow = Snow(amount: .zero)
+            snow = Snow(amountFor1h: .zero, amountFor3h: .zero)
         } else {
             snow = cellSummary.weather.snow!
         }
