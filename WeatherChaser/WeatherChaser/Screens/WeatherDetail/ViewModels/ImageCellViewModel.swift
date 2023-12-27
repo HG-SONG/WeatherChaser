@@ -19,7 +19,7 @@ class ImageCellViewModel: WeatherDetailViewModelBySection {
             self.title = "Cloud cover"
         } else if let data = something as? Wind {
             self.texts.append(data.deg.convertToDirection())
-            self.texts.append(data.speed.formatAsAmount() + "m/sec")
+            self.texts.append(data.speed.formatAsAmountFor1h() + "m/sec")
             self.imageName = "wind.jpg"
             self.title = "Wind"
         } else if let data = something as? SunSetAndRise {
@@ -28,7 +28,11 @@ class ImageCellViewModel: WeatherDetailViewModelBySection {
             self.imageName = "sunset.jpg"
             self.title = "Sunrise & Sunset"
         } else if let data = something as? Rain {
-            self.texts.append(data.amount.formatAsAmount() + "mm")
+            self.texts.append("⛆ " + data.amount.formatAsAmountFor1h() + "mm")
+            self.imageName = "precipitation.png"
+            self.title = "Precipitation 1h"
+        } else if let data = something as? Snow {
+            self.texts.append("❆ " + data.amount.formatAsAmountFor1h() + "mm")
             self.imageName = "precipitation.png"
             self.title = "Precipitation 1h"
         } else {
