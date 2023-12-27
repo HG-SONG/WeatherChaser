@@ -34,4 +34,18 @@ extension Int {
             return "☼ " + formattedDate
         }
     }
+    
+    func splitDate() -> [String] {
+        let timestamp = TimeInterval(self)
+        let date = Date(timeIntervalSince1970: timestamp)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-DD"
+        let firstFormatted = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = "HH:mm"
+        let secondFormatted = dateFormatter.string(from: date)
+        
+        return [firstFormatted,secondFormatted]
+    }
 }
