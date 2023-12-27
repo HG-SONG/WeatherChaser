@@ -64,7 +64,7 @@ class ImageCell: UICollectionViewCell {
             let label = UILabel(frame: .zero)
             label.text = item
             label.numberOfLines = 2
-            label.font = UIFont.systemFont(ofSize: 35.0, weight: .bold)
+            label.font = UIFont.systemFont(ofSize: 25.0, weight: .bold)
             self.textStackView.addArrangedSubview(label)
         }
     }
