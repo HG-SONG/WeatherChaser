@@ -17,17 +17,21 @@ struct Wind : Codable {
 }
 
 struct Rain : Codable {
-    let amount : Double
+    let amountFor1h : Double?
+    let amountFor3h : Double?
     
     enum CodingKeys: String, CodingKey {
-        case amount = "3h"
+        case amountFor1h = "1h"
+        case amountFor3h = "3h"
     }
 }
 
 struct Snow : Codable {
-    let amount : Double
+    let amountFor1h : Double?
+    let amountFor3h : Double?
     
     enum CodingKeys: String, CodingKey {
-        case amount = "3h"
+        case amountFor1h = "1h"
+        case amountFor3h = "3h"
     }
 }
