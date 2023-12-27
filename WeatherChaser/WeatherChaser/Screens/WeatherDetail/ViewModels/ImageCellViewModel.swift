@@ -19,7 +19,7 @@ class ImageCellViewModel: WeatherDetailViewModelBySection {
             self.title = "Cloud cover"
         } else if let data = something as? Wind {
             self.texts.append(data.deg.convertToDirection())
-            self.texts.append(data.speed.formatAsAmountFor1h() + "m/sec")
+            self.texts.append(data.speed.formatAsTwoDecimalPlaces() + "m/sec")
             self.imageName = "wind.jpg"
             self.title = "Wind"
         } else if let data = something as? SunSetAndRise {
@@ -28,11 +28,12 @@ class ImageCellViewModel: WeatherDetailViewModelBySection {
             self.imageName = "sunset.jpg"
             self.title = "Sunrise & Sunset"
         } else if let data = something as? Rain {
-            self.texts.append("⛆ " + data.amount.formatAsAmountFor1h() + "mm")
+            self.texts.append("⛆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
+            //Rain이 nil 일 경우, Rain(0)이 들어오도록 세팅해놓았음. 즉, 여기 라인에서 nil일 경우는 없다. 
             self.imageName = "precipitation.png"
             self.title = "Precipitation 1h"
         } else if let data = something as? Snow {
-            self.texts.append("❆ " + data.amount.formatAsAmountFor1h() + "mm")
+            self.texts.append("❆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
             self.imageName = "precipitation.png"
             self.title = "Precipitation 1h"
         } else {
