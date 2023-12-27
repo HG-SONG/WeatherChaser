@@ -16,6 +16,7 @@ struct WeatherResponse: Codable {
     let clouds : Clouds
     let wind : Wind
     let rain : Rain?
+    let snow : Snow?
 }
 
 struct SunSetAndRise: Codable {

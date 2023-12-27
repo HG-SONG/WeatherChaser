@@ -23,3 +23,11 @@ struct Rain : Codable {
         case amount = "3h"
     }
 }
+
+struct Snow : Codable {
+    let amount : Double
+    
+    enum CodingKeys: String, CodingKey {
+        case amount = "3h"
+    }
+}

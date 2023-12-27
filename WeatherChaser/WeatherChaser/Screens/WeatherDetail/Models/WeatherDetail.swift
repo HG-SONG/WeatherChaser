@@ -15,5 +15,6 @@ struct WeatherDetail : Codable {
     let wind : Wind
     let pop : Double
     let rain : Rain?
+    let snow : Snow?
     let dt_txt : String
 }
