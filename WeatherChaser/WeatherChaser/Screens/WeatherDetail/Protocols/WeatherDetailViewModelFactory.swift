@@ -11,7 +11,8 @@ protocol WeatherDetailViewModelFactory {
     static func makeCellViewModel(at section : Int) -> WeatherDetailViewModelBySection
 }
 
-protocol WeatherDetailViewModelBySection {
+@objc protocol WeatherDetailViewModelBySection {
     func setViewModel(with something: Any?)
-    func getViewModel() -> [String]
+    @objc optional func getViewModelAsString() -> [String]
+    @objc optional func getViewModelAsObject() -> [Any]
 }
