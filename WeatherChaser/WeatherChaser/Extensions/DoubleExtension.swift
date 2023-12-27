@@ -12,7 +12,7 @@ extension Double {
         return String(format: "%.0f", self)
     }
     
-    func formatAsAmountFor1h() -> String {
-        return String(format: "%.2f", self / 3)
+    func formatAsTwoDecimalPlaces() -> String {
+        return String(format: "%.2f", self)
     }
 }

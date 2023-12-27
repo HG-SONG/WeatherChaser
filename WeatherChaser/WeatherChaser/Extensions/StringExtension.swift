@@ -8,8 +8,8 @@
 import Foundation
 
 extension String {
-    func replaceSpacesWithDash() -> String {
-        return self.replacingOccurrences(of: " ", with: "-")
+    func replaceSpacesWithPlus() -> String {
+        return self.replacingOccurrences(of: " ", with: "+")
     }
     
     func makeUnitSymbol() -> String {
