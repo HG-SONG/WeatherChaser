@@ -83,14 +83,23 @@ class WeatherDetailViewModel {
         let clouds = cellSummary.weather.clouds
         let sunriseAndSet = cellSummary.weather.sys
         var rain : Rain
+        var snow : Snow
+        
         if cellSummary.weather.rain == nil {
             rain = Rain(amount: .zero)
         } else {
             rain = cellSummary.weather.rain!
         }
         
+        if cellSummary.weather.snow == nil {
+            snow = Snow(amount: .zero)
+        } else {
+            snow = cellSummary.weather.snow!
+        }
+        
         let rainCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
         rainCellViewModel.setViewModel(with: rain)
+        rainCellViewModel.setViewModel(with: snow)
         self.sectionTwoViewModel.append(rainCellViewModel)
         
         let cloudsCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
