@@ -8,21 +8,21 @@
 import Foundation
 
 class WeatherBy3hViewModel {
-    private var date : String = ""
-    private var time : String = ""
-    private var imageName : String = ""
-    private var temparature : String = ""
-    private var rainPrecipitation : String = "⛆ "
-    private var snowPrecipitation : String = "❆ "
-    private var pop : String = ""
+    var date : String = ""
+    var time : String = ""
+    var imageName : String = ""
+    var temparature : String = ""
+    var rainPrecipitation : String = "⛆ "
+    var snowPrecipitation : String = "❆ "
+    var pop : String = "☔︎ "
     
     func setupViewModel(_ viewModel : WeatherDetail) {
         setupDateAndTime(fullDate: viewModel.dt)
-        self.imageName = viewModel.weather.first!.main
-        self.temparature = viewModel.main.temp.formatAsDegree()
-        self.rainPrecipitation += (viewModel.rain?.amountFor3h?.formatAsTwoDecimalPlaces() ?? "0.00mm")
-        self.snowPrecipitation += (viewModel.snow?.amountFor3h?.formatAsTwoDecimalPlaces() ?? "0.00mm")
-        self.pop = viewModel.pop.formatAsTwoDecimalPlaces()
+        setupImageName(viewModel.weather.first?.main ?? "error")
+        self.temparature = viewModel.main.temp.formatAsDegree().makeUnitSymbol()
+        self.rainPrecipitation += (viewModel.rain?.amountFor3h?.formatAsTwoDecimalPlaces() ?? "0.00") + "mm"
+        self.snowPrecipitation += (viewModel.snow?.amountFor3h?.formatAsTwoDecimalPlaces() ?? "0.00") + "mm"
+        self.pop += viewModel.pop.formatAsProb()
     }
     
     private func setupDateAndTime(fullDate: Int) {
@@ -31,4 +31,20 @@ class WeatherBy3hViewModel {
         self.time = splited[1]
     }
     
+    private func setupImageName(_ text : String) {
+        switch text {
+        case "Rain":
+            self.imageName = "cloud.heavyrain.fill"
+        case "Snow":
+            self.imageName = "snowflake"
+        case "Clouds":
+            self.imageName = "cloud.fill"
+        case "Wind" :
+            self.imageName = "wind"
+        case "Clear" :
+            self.imageName = "sun.max.fill"
+        default :
+            self.imageName = "questionmark.app.fill"
+        }
+    }
 }
