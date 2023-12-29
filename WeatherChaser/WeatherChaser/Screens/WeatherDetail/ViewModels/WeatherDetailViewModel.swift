@@ -11,6 +11,7 @@ class WeatherDetailViewModel {
     private var sectionZeroViewModel = [WeatherDetailViewModelBySection?]()
     private var sectionOneViewModel : WeatherDetailViewModelBySection?
     private var sectionTwoViewModel = [WeatherDetailViewModelBySection?]()
+    private var sectionThreeViewModel : WeatherDetailViewModelBySection?
     
     func setupUpperSectionViewModel(_ cellSummary : WeatherCellViewModel) {
         let cityName = cellSummary.city
@@ -23,7 +24,8 @@ class WeatherDetailViewModel {
         setupImageCellViewModel(cellSummary)
     }
     
-    func setupLowerSectionWithFetching(of city: String){
+    func setupLowerSectionWithFetching(of city: String,completion: @escaping () -> Void){
+        
         let weatherDetailURL = URLManager.setURLforWeatherDetail(of: city)
         
         let weatherDetailResource = Resource<WeatherDetailResponse>(url: weatherDetailURL) { data in
@@ -33,10 +35,12 @@ class WeatherDetailViewModel {
         
         NetworkManager.fetch(resource: weatherDetailResource) { (result) in
             switch result {
-            case .success(let weatherDetailResponse) :
-                self.setSectionThree(with: weatherDetailResponse)
+            case .success(let response) :
+                self.setSectionThree(with: response)
+                completion()
             case .failure(let error) :
                 print(error)
+                completion()
             }
         }
     }
@@ -50,14 +54,16 @@ class WeatherDetailViewModel {
         case 2:
             return self.sectionTwoViewModel[indexPath.item]
         case 3:
-            return nil
+            return self.sectionThreeViewModel
         default:
             return nil
         }
     }
     
     private func setSectionThree(with fetchedData : WeatherDetailResponse) {
-        
+        let fiveDaysWeatherViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 3)
+        fiveDaysWeatherViewModel.setViewModel(with: fetchedData)
+        self.sectionThreeViewModel = fiveDaysWeatherViewModel
     }
     
     private func setupNameCellViewModel(_ cityName: String) {
@@ -65,13 +71,14 @@ class WeatherDetailViewModel {
         nameCellViewModel.setViewModel(with: cityName)
         self.sectionZeroViewModel.append(nameCellViewModel)
     }
-
+    
     private func setupCurrentTempCellViewModel(_ currentTemperature: String) {
+        let temp = currentTemperature.makeUnitSymbol()
         let currentTempCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 0)
-        currentTempCellViewModel.setViewModel(with: currentTemperature)
+        currentTempCellViewModel.setViewModel(with: temp)
         self.sectionZeroViewModel.append(currentTempCellViewModel)
     }
-
+    
     private func setupDescriptionCellViewModel(_ description: String) {
         let descriptionCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 1)
         descriptionCellViewModel.setViewModel(with: description)
