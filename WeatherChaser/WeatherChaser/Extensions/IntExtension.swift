@@ -40,7 +40,7 @@ extension Int {
         let date = Date(timeIntervalSince1970: timestamp)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-DD"
+        dateFormatter.dateFormat = "MM-dd"
         let firstFormatted = dateFormatter.string(from: date)
         
         dateFormatter.dateFormat = "HH:mm"
