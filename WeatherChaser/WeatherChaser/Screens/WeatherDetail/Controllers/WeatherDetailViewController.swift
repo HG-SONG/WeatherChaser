@@ -19,7 +19,7 @@ class WeatherDetailViewController : UIViewController {
     
     private func makeCollectionView() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex,_) -> NSCollectionLayoutSection? in
-
+            
             return self.createSection(for: sectionIndex)
         }
         
@@ -34,6 +34,7 @@ class WeatherDetailViewController : UIViewController {
     private func registerCells() {
         self.collectionView!.register(LabelCell.self, forCellWithReuseIdentifier: LabelCell.identifier)
         self.collectionView!.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.identifier)
+        self.collectionView!.register(FiveDaysWeatherCell.self, forCellWithReuseIdentifier: FiveDaysWeatherCell.identifier)
     }
     
     func setupViewModel(_ cellSummary : WeatherCellViewModel, completion: @escaping () -> Void) {
@@ -78,7 +79,7 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         case 2 :
             cell = setSectionTwo(collectionView: collectionView, indexPath: indexPath)
         case 3 :
-            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath) //임시
+            cell = setSectionThree(collectionView: collectionView, indexPath: indexPath)
         default :
             cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath) //임시
         }
@@ -124,7 +125,7 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-
+        
         return section
     }
     
@@ -132,11 +133,10 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.4))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
         return section
     }
 }
@@ -173,7 +173,19 @@ extension WeatherDetailViewController {
         return cell
     }
     
-//    private func setSectionThree(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-//
-//    }
+    private func setSectionThree(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FiveDaysWeatherCell.identifier, for: indexPath) as? FiveDaysWeatherCell else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        
+        guard let viewModel = self.weatherDetailViewModel.modelAt(indexPath)?.getViewModelAsObject?() else {
+            return UICollectionViewCell(frame: .zero)
+        }
+        
+        cell.commonInit()
+        cell.setFiveDaysWeatherCell(viewModel)
+        
+        return cell
+    }
 }
