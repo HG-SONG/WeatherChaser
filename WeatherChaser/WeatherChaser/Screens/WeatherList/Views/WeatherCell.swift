@@ -9,13 +9,13 @@ import UIKit
 
 class WeatherCell: UITableViewCell {
     static let identifier = "WeatherCell"
-    private var nameLabel = UILabel(frame: .zero)
-    private var thisMomentLabel = UILabel(frame: .zero)
-    private var temperatureMainLabel = UILabel(frame: .zero)
-    private var temperatureSubStackView = UIStackView(frame: .zero)
-    private var weatherSymbol = UIImageView(frame:.zero)
-    private var backgoundImageView = UIImageView(frame: .zero)
-    private var updatedAtLabel = UILabel(frame: .zero)
+    private let nameLabel = UILabel(frame: .zero)
+    private let thisMomentLabel = UILabel(frame: .zero)
+    private let temperatureMainLabel = UILabel(frame: .zero)
+    private let temperatureSubStackView = UIStackView(frame: .zero)
+    private let weatherSymbol = UIImageView(frame:.zero)
+    private let backgoundImageView = UIImageView(frame: .zero)
+    private let updatedAtLabel = UILabel(frame: .zero)
     
     func commonInit(_ viewModel: WeatherCellViewModel) {
         disableSelectionHighlight()
@@ -146,7 +146,7 @@ extension WeatherCell {
     
     private func configureTemperatureLabel(_ viewModel: WeatherCellViewModel) {
         self.temperatureMainLabel.text = viewModel.temperature.makeUnitSymbol()
-        self.temperatureMainLabel.font = self.temperatureMainLabel.font.withSize(80.0)
+        self.temperatureMainLabel.font = self.temperatureMainLabel.font.withSize(55.0)
     }
     
     private func configureTemperatureWeatherSymbol(_ viewModel: WeatherCellViewModel) {
@@ -190,7 +190,7 @@ extension WeatherCell {
         let label = UILabel()
         label.text = text
         label.textColor = fontColor
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = UIFont.boldSystemFont(ofSize: 17.0)
         
         return label
     }

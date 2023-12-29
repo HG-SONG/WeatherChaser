@@ -9,7 +9,7 @@ import UIKit
 
 class LabelCell: UICollectionViewCell {
     static let identifier = "LabelCell"
-    private var titleLabel = UILabel(frame: .zero)
+    private let titleLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
