@@ -23,6 +23,6 @@ class FiveDaysCellViewModel : WeatherDetailViewModelBySection {
     }
 
     func getViewModelAsObject() -> [Any] {
-        return [self.list]
+        return self.list
     }
 }
