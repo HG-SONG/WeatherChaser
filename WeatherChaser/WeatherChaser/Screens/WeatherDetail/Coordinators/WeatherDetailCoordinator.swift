@@ -9,7 +9,6 @@ import UIKit
 
 class WeatherDetailCoordinator: Coordinator {
     private var presenter : UINavigationController
-    //private var weatherDetailViewController : WeatherDetailViewController?
     
     init(presenter : UINavigationController){
         self.presenter = presenter
@@ -27,10 +26,10 @@ class WeatherDetailCoordinator: Coordinator {
         let cellSummary = previousViewController.pullCellData(at: indexPath)
         
         let weatherDetailViewController = WeatherDetailViewController(nibName: nil, bundle: nil)
-        weatherDetailViewController.setupViewModel(cellSummary)
-        weatherDetailViewController.title = "View in detail"
         
-        self.presenter.pushViewController(weatherDetailViewController, animated: true)
+        weatherDetailViewController.setupViewModel(cellSummary) {
+            weatherDetailViewController.title = "View in detail"
+            self.presenter.pushViewController(weatherDetailViewController, animated: true)
+        }
     }
-    
 }

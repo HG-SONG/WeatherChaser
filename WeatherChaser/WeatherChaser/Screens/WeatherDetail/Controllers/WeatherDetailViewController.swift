@@ -36,9 +36,12 @@ class WeatherDetailViewController : UIViewController {
         self.collectionView!.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.identifier)
     }
     
-    func setupViewModel(_ cellSummary : WeatherCellViewModel) {
+    func setupViewModel(_ cellSummary : WeatherCellViewModel, completion: @escaping () -> Void) {
+        
         self.weatherDetailViewModel.setupUpperSectionViewModel(cellSummary)
-        self.weatherDetailViewModel.setupLowerSectionWithFetching(of: cellSummary.city)
+        self.weatherDetailViewModel.setupLowerSectionWithFetching(of: cellSummary.city){
+            completion()
+        }
     }
 }
 
