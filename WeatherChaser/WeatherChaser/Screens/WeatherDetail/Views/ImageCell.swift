@@ -9,8 +9,8 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     static let identifier = "ImageCell"
-    private var textStackView = UIStackView(frame: .zero)
-    private var titleLabel = UILabel(frame: .zero)
+    private let textStackView = UIStackView(frame: .zero)
+    private let titleLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
