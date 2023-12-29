@@ -32,6 +32,8 @@
 		E48341AC2B3A038600C2ABD6 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341AB2B3A038600C2ABD6 /* ImageCell.swift */; };
 		E48341B02B3C197000C2ABD6 /* FiveDaysWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341AF2B3C197000C2ABD6 /* FiveDaysWeatherViewModel.swift */; };
 		E48341B22B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B12B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift */; };
+		E48341B42B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B32B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift */; };
+		E48341B62B3C908A00C2ABD6 /* WeatherBy3hView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B52B3C908A00C2ABD6 /* WeatherBy3hView.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -83,6 +85,8 @@
 		E48341AB2B3A038600C2ABD6 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		E48341AF2B3C197000C2ABD6 /* FiveDaysWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysWeatherViewModel.swift; sourceTree = "<group>"; };
 		E48341B12B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBy3hViewModel.swift; sourceTree = "<group>"; };
+		E48341B32B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysWeatherCell.swift; sourceTree = "<group>"; };
+		E48341B52B3C908A00C2ABD6 /* WeatherBy3hView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBy3hView.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			children = (
 				E483418E2B342E5600C2ABD6 /* LabelCell.swift */,
 				E48341AB2B3A038600C2ABD6 /* ImageCell.swift */,
+				E48341B32B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift */,
+				E48341B52B3C908A00C2ABD6 /* WeatherBy3hView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				E4050BBA2B2EDFA600487126 /* ErrorManager.swift in Sources */,
 				E4050BBC2B31933E00487126 /* Unit.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
+				E48341B62B3C908A00C2ABD6 /* WeatherBy3hView.swift in Sources */,
 				E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */,
 				E4022AC22B28631800E9EC15 /* UIColorExtension.swift in Sources */,
 				E48341A82B384C1400C2ABD6 /* WeatherDetailViewModelCreator.swift in Sources */,
@@ -559,6 +566,7 @@
 				E4A29D9E2B1F1E1A00A3ED94 /* Weather.swift in Sources */,
 				E4050BB82B2ECA5800487126 /* StringExtension.swift in Sources */,
 				E48341AA2B39E52F00C2ABD6 /* IntExtension.swift in Sources */,
+				E48341B42B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift in Sources */,
 				E4050BDA2B341FFD00487126 /* WeatherDetailViewController.swift in Sources */,
 				E48341A22B38423B00C2ABD6 /* ImageCellViewModel.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
