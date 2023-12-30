@@ -34,6 +34,8 @@
 		E48341B22B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B12B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift */; };
 		E48341B42B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B32B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift */; };
 		E48341B62B3C908A00C2ABD6 /* WeatherBy3hView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B52B3C908A00C2ABD6 /* WeatherBy3hView.swift */; };
+		E48341B82B400B3700C2ABD6 /* APIKeyFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B72B400B3700C2ABD6 /* APIKeyFetcher.swift */; };
+		E48341BA2B4012A200C2ABD6 /* ErrorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48341B92B4012A200C2ABD6 /* ErrorCoordinator.swift */; };
 		E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */; };
 		E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */; };
 		E4A29D672B1C66FA00A3ED94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A29D662B1C66FA00A3ED94 /* Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		E48341B12B3C244D00C2ABD6 /* WeatherBy3hViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBy3hViewModel.swift; sourceTree = "<group>"; };
 		E48341B32B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysWeatherCell.swift; sourceTree = "<group>"; };
 		E48341B52B3C908A00C2ABD6 /* WeatherBy3hView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBy3hView.swift; sourceTree = "<group>"; };
+		E48341B72B400B3700C2ABD6 /* APIKeyFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyFetcher.swift; sourceTree = "<group>"; };
+		E48341B92B4012A200C2ABD6 /* ErrorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCoordinator.swift; sourceTree = "<group>"; };
 		E4A29D5A2B1C66F900A3ED94 /* WeatherChaser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherChaser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A29D5D2B1C66F900A3ED94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4A29D5F2B1C66F900A3ED94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				E4A29D772B1C6C6C00A3ED94 /* RootCoordinator.swift */,
+				E48341B92B4012A200C2ABD6 /* ErrorCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 			children = (
 				E4A29D992B1F177A00A3ED94 /* NetworkManager.swift */,
 				E4A29D9B2B1F17A400A3ED94 /* URLManager.swift */,
+				E48341B72B400B3700C2ABD6 /* APIKeyFetcher.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				E4050BB82B2ECA5800487126 /* StringExtension.swift in Sources */,
 				E48341AA2B39E52F00C2ABD6 /* IntExtension.swift in Sources */,
 				E48341B42B3C8DA500C2ABD6 /* FiveDaysWeatherCell.swift in Sources */,
+				E48341BA2B4012A200C2ABD6 /* ErrorCoordinator.swift in Sources */,
 				E4050BDA2B341FFD00487126 /* WeatherDetailViewController.swift in Sources */,
 				E48341A22B38423B00C2ABD6 /* ImageCellViewModel.swift in Sources */,
 				E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */,
@@ -586,6 +593,7 @@
 				E4A29D5E2B1C66F900A3ED94 /* AppDelegate.swift in Sources */,
 				E4A29D602B1C66F900A3ED94 /* SceneDelegate.swift in Sources */,
 				E4A29DA72B1F299800A3ED94 /* AddCityViewModel.swift in Sources */,
+				E48341B82B400B3700C2ABD6 /* APIKeyFetcher.swift in Sources */,
 				E4A29D782B1C6C6C00A3ED94 /* RootCoordinator.swift in Sources */,
 				E4050BB62B29886900487126 /* LocationManager.swift in Sources */,
 				E48341B02B3C197000C2ABD6 /* FiveDaysWeatherViewModel.swift in Sources */,
