@@ -28,10 +28,19 @@ class AddCityViewController : UIViewController {
     }
     
     private func setCityNameTextField() {
-        self.cityNameTextField.placeholder = "Enter the city name"
+        
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.darkGray,
+        ]
+        self.cityNameTextField.attributedPlaceholder = NSAttributedString(string: "Enter the city name", attributes: placeholderAttributes)
+        
+        
         self.cityNameTextField.borderStyle = .roundedRect
         self.cityNameTextField.textColor = .white
-        self.cityNameTextField.backgroundColor = .darkGray
+        self.cityNameTextField.backgroundColor = .black
+        self.cityNameTextField.layer.cornerRadius = 5.0
+        self.cityNameTextField.layer.borderColor = UIColor.white.cgColor
+        self.cityNameTextField.layer.borderWidth = 1.0
         
         self.view.addSubview(cityNameTextField)
         

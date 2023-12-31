@@ -51,6 +51,7 @@ class SettingsTableViewController : UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
         cell.textLabel?.text = settingsItem.displayName
         cell.textLabel?.font = UIFont.systemFont(ofSize: 25.0, weight: .bold)
+        cell.textLabel?.textColor = .white
         
         if settingsItem == settingsViewModel.selectedUnit {
             cell.accessoryType = .checkmark
