@@ -21,9 +21,20 @@ class RootCoordinator : Coordinator {
     }
     
     func changeViewController() {
-        window?.rootViewController = self.rootViewController
-        window?.makeKeyAndVisible()
-        self.weatherListCoordinator.changeViewController()
+        APIKeyFetcher.fetchAPIKey { result in
+            switch result {
+            case .success(_) :
+                self.window?.rootViewController = self.rootViewController
+                self.window?.makeKeyAndVisible()
+                self.weatherListCoordinator.changeViewController()
+            case .failure(_) :
+                DispatchQueue.main.async {
+                    self.window?.rootViewController = self.rootViewController
+                    self.window?.makeKeyAndVisible()
+                    ErrorCoordinator(presenter: self.rootViewController).changeViewController()
+                }
+            }
+        }
     }
-
+    
 }
