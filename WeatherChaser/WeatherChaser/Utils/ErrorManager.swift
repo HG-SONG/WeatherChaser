@@ -45,4 +45,19 @@ class ErrorManager {
             }
         }
     }
+    
+    static func showExitAlert() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: "Cannot retrieve the authentication key. Please check your network status.", preferredStyle: .alert)
+            let exitAction = UIAlertAction(title: "Exit", style: .default) { _ in
+                UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+            }
+            
+            alertController.addAction(exitAction)
+            
+            if let topViewController = UIApplication.shared.windows.first?.rootViewController {
+                topViewController.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
 }
