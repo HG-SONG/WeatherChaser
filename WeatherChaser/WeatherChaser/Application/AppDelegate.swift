@@ -9,7 +9,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().barTintColor = .black
@@ -44,6 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set("metric", forKey: "unit")
             userDefaults.set("metric", forKey: "selected")
         }
+
     }
 }
-
