@@ -17,13 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-WM-Mbb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-WM-Mbb">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="abJ-WM-Mbb" secondAttribute="bottom" id="46G-pH-x99"/>
+                            <constraint firstItem="abJ-WM-Mbb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4IF-mc-Vov"/>
+                            <constraint firstItem="abJ-WM-Mbb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="6Yh-O4-eqb"/>
+                            <constraint firstItem="abJ-WM-Mbb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lVD-08-gDZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
