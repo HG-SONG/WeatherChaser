@@ -57,6 +57,7 @@
 		E4A29DA22B1F20F900A3ED94 /* WeatherDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */; };
 		E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */; };
 		E4A29DA72B1F299800A3ED94 /* AddCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29DA62B1F299800A3ED94 /* AddCityViewModel.swift */; };
+		E4D6C9842B42D99B000D5737 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6C9832B42D99B000D5737 /* LoadingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		E4A29DA12B1F20F900A3ED94 /* WeatherDesc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDesc.swift; sourceTree = "<group>"; };
 		E4A29DA32B1F25E100A3ED94 /* WeatherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCellViewModel.swift; sourceTree = "<group>"; };
 		E4A29DA62B1F299800A3ED94 /* AddCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewModel.swift; sourceTree = "<group>"; };
+		E4D6C9832B42D99B000D5737 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				E4050BB52B29886900487126 /* LocationManager.swift */,
 				E4050BB92B2EDFA600487126 /* ErrorManager.swift */,
 				E4050BBB2B31933E00487126 /* Unit.swift */,
+				E4D6C9832B42D99B000D5737 /* LoadingManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				E4050BBC2B31933E00487126 /* Unit.swift in Sources */,
 				E4A29D7C2B1C6F1800A3ED94 /* WeatherListTableViewController.swift in Sources */,
 				E48341B62B3C908A00C2ABD6 /* WeatherBy3hView.swift in Sources */,
+				E4D6C9842B42D99B000D5737 /* LoadingManager.swift in Sources */,
 				E4A29DA42B1F25E100A3ED94 /* WeatherCellViewModel.swift in Sources */,
 				E4022AC22B28631800E9EC15 /* UIColorExtension.swift in Sources */,
 				E48341A82B384C1400C2ABD6 /* WeatherDetailViewModelCreator.swift in Sources */,
