@@ -33,13 +33,15 @@ class WeatherDetailViewModel {
             return weatherDetailResponse
         }
         
+        LoadingManager.showLoadingIndicator()
         NetworkManager.fetch(resource: weatherDetailResource) { (result) in
             switch result {
             case .success(let response) :
                 self.setSectionThree(with: response)
+                LoadingManager.hideLoadingIndicator()
                 completion()
-            case .failure(let error) :
-                print(error)
+            case .failure(_) :
+                LoadingManager.hideLoadingIndicator()
                 completion()
             }
         }

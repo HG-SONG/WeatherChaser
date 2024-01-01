@@ -25,6 +25,7 @@ class APIKeyFetcher {
             return apiKey
         }
         
+        LoadingManager.showLoadingIndicator()
         NetworkManager.fetch(resource: resource) { (result) in
             switch result {
             case .success(let apiKey) :
@@ -32,9 +33,10 @@ class APIKeyFetcher {
                     return
                 }
                 setenv(environmentVariable, apiKey,1)
+                LoadingManager.hideLoadingIndicator()
                 completion(.success(apiKey))
             case .failure(let error) :
-                print(error)
+                LoadingManager.hideLoadingIndicator()
                 completion(.failure(error))
             }
         }

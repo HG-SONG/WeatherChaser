@@ -29,13 +29,16 @@ class AddCityViewModel {
             return weatherResponse
         }
         
+        LoadingManager.showLoadingIndicator()
         NetworkManager.fetch(resource: weatherResource) { (result) in
             switch result {
             case .success(let weatherResponse):
-                    let viewModel = WeatherCellViewModel(weather: weatherResponse)
-                    completion(viewModel,nil)
-
+                let viewModel = WeatherCellViewModel(weather: weatherResponse)
+                LoadingManager.hideLoadingIndicator()
+                completion(viewModel,nil)
+                
             case .failure(let error):
+                LoadingManager.hideLoadingIndicator()
                 completion(nil,error)
             }
         }
