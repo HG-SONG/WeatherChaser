@@ -51,6 +51,7 @@ class ErrorManager {
             let alertController = UIAlertController(title: "Error", message: "Cannot retrieve the authentication key. Please check your network status.", preferredStyle: .alert)
             let exitAction = UIAlertAction(title: "Exit", style: .default) { _ in
                 UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+                exit(0)
             }
             
             alertController.addAction(exitAction)
