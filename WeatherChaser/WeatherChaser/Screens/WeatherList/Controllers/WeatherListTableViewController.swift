@@ -77,12 +77,14 @@ class WeatherListTableViewController: UITableViewController {
     }
     
     private func requestUserLocation() {
+        LoadingManager.showLoadingIndicator()
         self.locationManager.requestLocation { location in
             let tmp = AddCityViewModel()
             let lat = location.coordinate.latitude.description
             let lon = location.coordinate.longitude.description
             
             tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel,error in
+                LoadingManager.hideLoadingIndicator()
                 guard let viewModel = viewModel else {
                     guard let networkError = error as? NetworkError else {
                         ErrorManager.showAlertForUnknown()
