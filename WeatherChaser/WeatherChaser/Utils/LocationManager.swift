@@ -11,30 +11,28 @@ import CoreLocation
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private var locationManager = CLLocationManager()
+    private var stateDetermineCompletionHandler: (() -> Void)?
     private var completionHandler: ((CLLocation) -> Void)?
     
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        checkLocationAuthorization()
     }
     
-    private func checkLocationAuthorization() {
+    func checkLocationAuthorization(completion : @escaping () -> Void) {
         DispatchQueue.global().async {
+            self.stateDetermineCompletionHandler = completion
             if CLLocationManager.locationServicesEnabled() {
                 switch CLLocationManager.authorizationStatus() {
-                case .authorizedWhenInUse, .authorizedAlways:
-                    break
-                case .denied, .restricted:
-                    break
                 case .notDetermined:
                     self.locationManager.requestWhenInUseAuthorization()
-                @unknown default:
-                    break
+                    return
+                default:
+                    self.stateDetermineCompletionHandler?()
+                    self.stateDetermineCompletionHandler = nil
                 }
             } else {
-                print("Location services are not enabled")
                 self.locationManager.requestWhenInUseAuthorization()
             }
         }
@@ -57,5 +55,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         ErrorManager.showExitAlert(error: .deniedLocationAuth)
         completionHandler = nil
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        stateDetermineCompletionHandler?()
+        stateDetermineCompletionHandler = nil
     }
 }
