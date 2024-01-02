@@ -68,7 +68,7 @@ class WeatherListTableViewController: UITableViewController {
     @objc func updateData(_ notification: Notification) {
         if let data = notification.userInfo?["data"] as? WeatherCellViewModel {
             weatherListViewModel.addWeatherCellInViewModel(data)
-        } // 이거도 pop -> wiilAppear에서 처리할까? 일단 커밋따고 고민해보자.
+        }
         self.tableView.reloadData()
     }
     

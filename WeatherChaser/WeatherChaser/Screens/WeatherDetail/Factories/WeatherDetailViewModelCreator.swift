@@ -17,7 +17,7 @@ class WeatherDetailViewModelCreator : WeatherDetailViewModelFactory {
         case 3 :
             return FiveDaysCellViewModel()
         default :
-            return LabelCellViewModel() // 임시
+            return LabelCellViewModel()
         }
 
     }

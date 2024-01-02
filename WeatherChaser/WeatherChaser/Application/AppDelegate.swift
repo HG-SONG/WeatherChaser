@@ -44,6 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set("metric", forKey: "unit")
             userDefaults.set("metric", forKey: "selected")
         }
-
     }
 }
