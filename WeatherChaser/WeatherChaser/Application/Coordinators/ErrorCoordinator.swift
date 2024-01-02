@@ -28,6 +28,6 @@ class ErrorViewController : UIViewController{
         backgroundImageView.frame = view.bounds
         backgroundImageView.contentMode = .scaleToFill
         self.view.addSubview(backgroundImageView)
-        ErrorManager.showExitAlert()
+        ErrorManager.showExitAlert(error: .noAPIKey)
     }
 }

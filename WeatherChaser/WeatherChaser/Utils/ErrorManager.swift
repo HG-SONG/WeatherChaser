@@ -46,9 +46,17 @@ class ErrorManager {
         }
     }
     
-    static func showExitAlert() {
+    static func showExitAlert(error:FatalError) {
         DispatchQueue.main.async {
-            let alertController = UIAlertController(title: "Error", message: "Cannot retrieve the authentication key. Please check your network status.", preferredStyle: .alert)
+            var message : String = ""
+            switch error {
+            case .noAPIKey :
+                message = "Cannot retrieve the authentication key. Please check your network status."
+            case .deniedLocationAuth :
+                message = "Location Services permission has been denied. Please open the 'Settings', go to 'Privacy & Security' and then 'Location Services,' and allow location permission for the app."
+            }
+            
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             let exitAction = UIAlertAction(title: "Exit", style: .default) { _ in
                 UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
                 exit(0)
@@ -61,4 +69,9 @@ class ErrorManager {
             }
         }
     }
+}
+
+enum FatalError {
+    case noAPIKey
+    case deniedLocationAuth
 }
