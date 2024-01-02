@@ -177,13 +177,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		E4050BC02B31950100487126 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		E4050BD82B341FE400487126 /* WeatherDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,7 +414,6 @@
 		E4A29D8F2B1F0BC400A3ED94 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E4050BC02B31950100487126 /* Views */,
 				E4050BBD2B31936200487126 /* ViewModels */,
 				E4A29D912B1F0BD900A3ED94 /* Coordinators */,
 				E4A29D902B1F0BD100A3ED94 /* Controllers */,
