@@ -52,7 +52,6 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         return 4
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -81,7 +80,7 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         case 3 :
             cell = setSectionThree(collectionView: collectionView, indexPath: indexPath)
         default :
-            cell = setSectionZeroAndOne(collectionView: collectionView, indexPath: indexPath) //임시
+            cell = UICollectionViewCell()
         }
         return cell
     }
@@ -97,7 +96,7 @@ extension WeatherDetailViewController : UICollectionViewDelegate, UICollectionVi
         case 3:
             return createHorizontalScrollingSection()
         default:
-            fatalError("Invalid section index")
+            return createSingleColumnSection()
         }
     }
     
