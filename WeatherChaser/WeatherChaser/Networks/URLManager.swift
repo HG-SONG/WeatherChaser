@@ -11,12 +11,12 @@ struct URLManager {
     
     static func setURLforWeather(of city: String) -> URL? {
         guard let environmentVariable = UserDefaults.standard.string(forKey: "environmentVariable") else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string:"Error")
         }
         
         guard let retrievedApiKey = ProcessInfo.processInfo.environment[environmentVariable] else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string: "Error")
         }
         
@@ -32,12 +32,12 @@ struct URLManager {
     
     static func setURLforWeatherByGPS(lat: String, lon: String) -> URL {
         guard let environmentVariable = UserDefaults.standard.string(forKey: "environmentVariable") else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string:"Error")!
         }
         
         guard let retrievedApiKey = ProcessInfo.processInfo.environment[environmentVariable] else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string: "Error")!
         }
         
@@ -50,12 +50,12 @@ struct URLManager {
     
     static func setURLforWeatherDetail(of city: String) -> URL {
         guard let environmentVariable = UserDefaults.standard.string(forKey: "environmentVariable") else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string:"Error")!
         }
         
         guard let retrievedApiKey = ProcessInfo.processInfo.environment[environmentVariable] else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return URL(string: "Error")!
         }
         
@@ -70,12 +70,12 @@ struct URLManager {
 
     private func apiKey() -> String {
         guard let environmentVariable = UserDefaults.standard.string(forKey: "environmentVariable") else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return ""
         }
         
         guard let retrievedApiKey = ProcessInfo.processInfo.environment[environmentVariable] else {
-            ErrorManager.showExitAlert()
+            ErrorManager.showExitAlert(error: .noAPIKey)
             return ""
         }
         

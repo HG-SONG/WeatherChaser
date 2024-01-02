@@ -55,7 +55,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location request 실패: \(error.localizedDescription)")
+        ErrorManager.showExitAlert(error: .deniedLocationAuth)
         completionHandler = nil
     }
 }
