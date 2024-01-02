@@ -33,8 +33,6 @@ class WeatherListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         self.weatherListViewModel.updateUnit()
         self.tableView.reloadData()
     }
@@ -78,25 +76,27 @@ class WeatherListTableViewController: UITableViewController {
     
     private func requestUserLocation() {
         LoadingManager.showLoadingIndicator()
-        self.locationManager.requestLocation { location in
-            LoadingManager.hideLoadingIndicator()
-            let tmp = AddCityViewModel()
-            let lat = location.coordinate.latitude.description
-            let lon = location.coordinate.longitude.description
-            
-            tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel,error in
-                guard let viewModel = viewModel else {
-                    guard let networkError = error as? NetworkError else {
-                        ErrorManager.showAlertForUnknown()
+        self.locationManager.checkLocationAuthorization {
+            self.locationManager.requestLocation { location in
+                LoadingManager.hideLoadingIndicator()
+                let tmp = AddCityViewModel()
+                let lat = location.coordinate.latitude.description
+                let lon = location.coordinate.longitude.description
+                
+                tmp.addWeatherCellViewModel(for: nil, lat: lat, lon: lon) { viewModel,error in
+                    guard let viewModel = viewModel else {
+                        guard let networkError = error as? NetworkError else {
+                            ErrorManager.showAlertForUnknown()
+                            return
+                        }
+                        ErrorManager.showAlert(error: networkError)
+                        self.showRetryButton()
                         return
                     }
-                    ErrorManager.showAlert(error: networkError)
-                    self.showRetryButton()
-                    return
+                    self.hideRetryButton()
+                    self.weatherListViewModel.addWeatherCellInViewModel(viewModel)
+                    self.tableView.reloadData()
                 }
-                self.hideRetryButton()
-                self.weatherListViewModel.addWeatherCellInViewModel(viewModel)
-                self.tableView.reloadData()
             }
         }
     }
