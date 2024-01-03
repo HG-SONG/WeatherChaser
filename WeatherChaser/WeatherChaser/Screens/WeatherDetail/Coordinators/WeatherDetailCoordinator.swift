@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherDetailCoordinator: Coordinator {
     private var presenter : UINavigationController
+    private var weatherDetailViewController = WeatherDetailViewController(nibName: nil, bundle: nil)
     
     init(presenter : UINavigationController){
         self.presenter = presenter
