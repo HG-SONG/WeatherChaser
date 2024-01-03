@@ -28,18 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupDefaultSettings()
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     private func setupDefaultSettings() {
         let userDefaults = UserDefaults.standard
-        if userDefaults.value(forKey: "unit") == nil {
-            userDefaults.set("metric", forKey: "unit")
-            userDefaults.set("metric", forKey: "selected")
-        }
+        
+        userDefaults.set("metric", forKey: "unit")
+        userDefaults.set("metric", forKey: "selected")
     }
 }
