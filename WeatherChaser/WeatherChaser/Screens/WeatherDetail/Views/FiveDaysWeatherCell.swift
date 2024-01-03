@@ -42,9 +42,6 @@ class FiveDaysWeatherCell: UICollectionViewCell {
             tmpStackView.addArrangedSubview(smallStackView)
         }
         
-        let totalWidth = tmpStackView.arrangedSubviews.reduce(0) { $0 + $1.frame.width }
-        
-        self.scrollView.contentSize = CGSize(width: totalWidth, height: self.scrollView.frame.height)
         self.fiveDaysStackView = tmpStackView
         
         if self.fiveDaysStackView != nil {
