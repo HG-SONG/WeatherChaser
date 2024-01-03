@@ -26,11 +26,11 @@ class WeatherDetailCoordinator: Coordinator {
         
         let cellSummary = previousViewController.pullCellData(at: indexPath)
         
-        let weatherDetailViewController = WeatherDetailViewController(nibName: nil, bundle: nil)
-        
-        weatherDetailViewController.setupViewModel(cellSummary) {
-            weatherDetailViewController.title = "View in detail"
-            self.presenter.pushViewController(weatherDetailViewController, animated: true)
+        weatherDetailViewController.setupViewModel(cellSummary) { [weak self] in
+            if self != nil {
+                self!.weatherDetailViewController.title = "View in detail"
+                self!.presenter.pushViewController(self!.weatherDetailViewController, animated: true)
+            }
         }
     }
 }
