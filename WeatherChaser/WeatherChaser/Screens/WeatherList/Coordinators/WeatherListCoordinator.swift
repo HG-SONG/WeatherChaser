@@ -9,10 +9,10 @@ import UIKit
 
 class WeatherListCoordinator: Coordinator {
     private var presenter : UINavigationController
-    private var weatherListTableViewController = WeatherListTableViewController(style: .grouped)
-    private var addCityCoordinator : AddCityCoordinator
-    private var settingsCoordinator : SettingsCoordinator
-    private var weatherDetailCoordinator : WeatherDetailCoordinator
+    private let weatherListTableViewController = WeatherListTableViewController(style: .grouped)
+    private let addCityCoordinator : AddCityCoordinator
+    private let settingsCoordinator : SettingsCoordinator
+    private let weatherDetailCoordinator : WeatherDetailCoordinator
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
