@@ -13,6 +13,13 @@ class WeatherDetailViewModel {
     private var sectionTwoViewModel = [WeatherDetailViewModelBySection?]()
     private var sectionThreeViewModel : WeatherDetailViewModelBySection?
     
+    func commonInit(){
+        self.sectionZeroViewModel = []
+        self.sectionOneViewModel = nil
+        self.sectionTwoViewModel = []
+        self.sectionThreeViewModel = nil
+    }
+    
     func setupUpperSectionViewModel(_ cellSummary : WeatherCellViewModel) {
         let cityName = cellSummary.city
         let currentTemperature = cellSummary.temperature

@@ -17,6 +17,10 @@ class WeatherDetailViewController : UIViewController {
         makeCollectionView()
     }
     
+    func reloadData() {
+        self.collectionView?.reloadData()
+    }
+    
     private func makeCollectionView() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex,_) -> NSCollectionLayoutSection? in
             
@@ -38,7 +42,7 @@ class WeatherDetailViewController : UIViewController {
     }
     
     func setupViewModel(_ cellSummary : WeatherCellViewModel, completion: @escaping () -> Void) {
-        
+        self.weatherDetailViewModel.commonInit()
         self.weatherDetailViewModel.setupUpperSectionViewModel(cellSummary)
         self.weatherDetailViewModel.setupLowerSectionWithFetching(of: cellSummary.city){
             completion()

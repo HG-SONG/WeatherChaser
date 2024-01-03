@@ -28,6 +28,7 @@ class WeatherDetailCoordinator: Coordinator {
         
         weatherDetailViewController.setupViewModel(cellSummary) { [weak self] in
             if self != nil {
+                self!.weatherDetailViewController.reloadData()
                 self!.weatherDetailViewController.title = "View in detail"
                 self!.presenter.pushViewController(self!.weatherDetailViewController, animated: true)
             }
