@@ -10,10 +10,15 @@ import UIKit
 class WeatherListCoordinator: Coordinator {
     private var presenter : UINavigationController
     private var weatherListTableViewController = WeatherListTableViewController(style: .grouped)
-    private var addCityCoordinator : AddCityCoordinator?
+    private var addCityCoordinator : AddCityCoordinator
+    private var settingsCoordinator : SettingsCoordinator
+    private var weatherDetailCoordinator : WeatherDetailCoordinator
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
+        self.addCityCoordinator = AddCityCoordinator(presenter: presenter)
+        self.settingsCoordinator = SettingsCoordinator(presenter: presenter)
+        self.weatherDetailCoordinator = WeatherDetailCoordinator(presenter: presenter)
     }
     
     func changeViewController() {
@@ -36,18 +41,14 @@ class WeatherListCoordinator: Coordinator {
 
 extension WeatherListCoordinator : CoordinatorDelegate {
     func addCityButtonTouched() {
-        let addCityCoordinator = AddCityCoordinator(presenter: self.presenter)
-        
-        addCityCoordinator.changeViewController()
+        self.addCityCoordinator.changeViewController()
     }
     
     func settingsButtonTouched() {
-        let settingsCoordinator = SettingsCoordinator(presenter: self.presenter)
-        settingsCoordinator.changeViewController()
+        self.settingsCoordinator.changeViewController()
     }
     
     func weatherCellTouched(at indexPath: IndexPath) {
-        let weatherDetailCoordinator = WeatherDetailCoordinator(presenter: self.presenter)
-        weatherDetailCoordinator.changeViewController(with: indexPath)
+        self.weatherDetailCoordinator.changeViewController(with: indexPath)
     }
 }

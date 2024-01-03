@@ -9,24 +9,22 @@ import UIKit
 
 class SettingsCoordinator: Coordinator {
     private var presenter: UINavigationController
-    private var settingsTableViewController : SettingsTableViewController?
+    private let settingsTableViewController = SettingsTableViewController(nibName: nil, bundle: nil)
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
     }
     
     func changeViewController() {
-        let settingsTableViewController = SettingsTableViewController(nibName: nil, bundle: nil)
-        settingsTableViewController.title = "Settings"
-        settingsTableViewController.delegate = self
-        self.settingsTableViewController = settingsTableViewController
-        self.presenter.pushViewController(settingsTableViewController, animated: true)
+        self.settingsTableViewController.title = "Settings"
+        self.settingsTableViewController.delegate = self
+        self.presenter.pushViewController(self.settingsTableViewController, animated: true)
     }
     
 }
 
 extension SettingsCoordinator: SaveDelegate {
     func saveButtonTouched() {
-        presenter.popViewController(animated: true)
+        self.presenter.popViewController(animated: true)
     }
 }

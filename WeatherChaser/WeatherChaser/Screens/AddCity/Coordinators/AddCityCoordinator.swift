@@ -9,23 +9,21 @@ import UIKit
 
 class AddCityCoordinator : Coordinator {
     private var presenter: UINavigationController
-    private var addCityViewController : AddCityViewController?
+    private var addCityViewController = AddCityViewController(nibName: nil, bundle: nil)
     
     init(presenter:UINavigationController) {
         self.presenter = presenter
     }
     
     func changeViewController() {
-        let addCityViewController = AddCityViewController(nibName: nil, bundle: nil)
-        addCityViewController.title = "Add City"
-        addCityViewController.delegate = self
-        self.addCityViewController = addCityViewController
-        presenter.pushViewController(addCityViewController, animated: true)
+        self.addCityViewController.title = "Add City"
+        self.addCityViewController.delegate = self
+        presenter.pushViewController(self.addCityViewController, animated: true)
     }
 }
 
 extension AddCityCoordinator: SaveDelegate {
     func saveButtonTouched() {
-        presenter.popViewController(animated: true)
+        self.presenter.popViewController(animated: true)
     }
 }
