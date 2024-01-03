@@ -10,15 +10,12 @@ import UIKit
 class FiveDaysWeatherCell: UICollectionViewCell {
     static let identifier = "FiveDaysWeatherCell"
     private let titleLabel = UILabel(frame: .zero)
-    private let fiveDaysStackView = UIStackView(frame: .zero)
+    private var fiveDaysStackView : UIStackView?
     private let scrollView = UIScrollView(frame: .zero)
     
     func commonInit() {
         self.titleLabel.text = "Weather forecast for 5 days"
         self.titleLabel.font = UIFont.systemFont(ofSize: 25.0,weight: .bold)
-        self.fiveDaysStackView.axis = .horizontal
-        self.fiveDaysStackView.spacing = 10.0
-        
     }
     
     override func layoutSubviews() {
@@ -31,13 +28,28 @@ class FiveDaysWeatherCell: UICollectionViewCell {
             return
         }
         
+        if self.fiveDaysStackView != nil {
+            self.fiveDaysStackView!.removeFromSuperview()
+        }
+        
+        let tmpStackView = UIStackView()
+        tmpStackView.axis = .horizontal
+        tmpStackView.spacing = 10.0
+        
         for item in fiveDaysWeathers {
             let smallStackView = WeatherBy3hView()
             smallStackView.commonInit(viewModel: item)
-            self.fiveDaysStackView.addArrangedSubview(smallStackView)
+            tmpStackView.addArrangedSubview(smallStackView)
         }
-        let totalWidth = fiveDaysStackView.arrangedSubviews.reduce(0) { $0 + $1.frame.width }
+        
+        let totalWidth = tmpStackView.arrangedSubviews.reduce(0) { $0 + $1.frame.width }
+        
         self.scrollView.contentSize = CGSize(width: totalWidth, height: self.scrollView.frame.height)
+        self.fiveDaysStackView = tmpStackView
+        
+        if self.fiveDaysStackView != nil {
+            self.scrollView.addSubview(fiveDaysStackView!)
+        }
     }
     
     private func setLayout() {
@@ -60,9 +72,12 @@ class FiveDaysWeatherCell: UICollectionViewCell {
     }
     
     private func setScrollViewLayout() {
+        guard let fiveDaysStackView = self.fiveDaysStackView else {
+            return
+        }
+        
         if !self.contentView.subviews.contains(scrollView) {
             self.contentView.addSubview(scrollView)
-            scrollView.addSubview(fiveDaysStackView)
         }
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
