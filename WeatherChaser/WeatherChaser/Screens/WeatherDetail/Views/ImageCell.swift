@@ -9,7 +9,7 @@ import UIKit
 
 class ImageCell: UICollectionViewCell {
     static let identifier = "ImageCell"
-    private let textStackView = UIStackView(frame: .zero)
+    private var textStackView = UIStackView(frame: .zero)
     private let titleLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
@@ -55,8 +55,11 @@ class ImageCell: UICollectionViewCell {
     }
     
     private func setTextStackView(_ array : [String]) {
-        self.textStackView.axis = .vertical
-        self.textStackView.alignment = .center
+        self.textStackView.removeFromSuperview()
+        
+        let tmpStackView = UIStackView()
+        tmpStackView.axis = .vertical
+        tmpStackView.alignment = .center
         let startIndex = 2
         let items = array[startIndex...]
         
@@ -65,8 +68,9 @@ class ImageCell: UICollectionViewCell {
             label.text = item
             label.numberOfLines = 2
             label.font = UIFont.systemFont(ofSize: 25.0, weight: .bold)
-            self.textStackView.addArrangedSubview(label)
+            tmpStackView.addArrangedSubview(label)
         }
+        self.textStackView = tmpStackView
     }
     
     private func layoutTextStackView() {
