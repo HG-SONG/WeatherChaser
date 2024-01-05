@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>We need your location to provide accurate weather information.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
