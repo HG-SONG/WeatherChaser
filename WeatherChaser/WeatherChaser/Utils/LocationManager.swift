@@ -53,8 +53,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        ErrorManager.showExitAlert(error: .deniedLocationAuth)
-        completionHandler = nil
+        let error = error as NSError
+        
+        if error.code == 0 {
+            return
+        } else {
+            ErrorManager.showExitAlert(error: .deniedLocationAuth)
+            completionHandler = nil
+        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
