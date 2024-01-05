@@ -21,9 +21,10 @@ class SettingsTableViewController : UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SettingsCell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         selectedUnit = settingsViewModel.selectedUnit
+        self.tableView.reloadData()
     }
     
     private func setBarButtons() {
@@ -33,8 +34,10 @@ class SettingsTableViewController : UITableViewController {
     }
     
     @objc private func saveButtonTouched() {
-        self.settingsViewModel.selectedUnit = self.selectedUnit!
-        delegate?.saveButtonTouched()
+        if self.selectedUnit != nil {
+            self.settingsViewModel.selectedUnit = self.selectedUnit!
+            delegate?.saveButtonTouched()
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
