@@ -53,7 +53,9 @@ class ErrorManager {
             case .noAPIKey :
                 message = "Cannot retrieve the authentication key. Please check your network status."
             case .deniedLocationAuth :
-                message = "Location Services permission has been denied. Please open the 'Settings', go to 'Privacy & Security' and then 'Location Services,' and allow location permission for the app."
+                message = "Location Services permission has been denied. Please open the 'Settings', go to 'Privacy & Security' and then 'Location Services', and allow location permission for the app."
+            case .locationServiceOff :
+                message = "Location services are turned off. Please open the 'Settings', go to 'Privacy & Security' and then 'Location Services'. turn it on, and restart the app."
             }
             
             let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -74,4 +76,5 @@ class ErrorManager {
 enum FatalError {
     case noAPIKey
     case deniedLocationAuth
+    case locationServiceOff
 }
