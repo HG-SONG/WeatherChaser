@@ -33,7 +33,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     self.stateDetermineCompletionHandler = nil
                 }
             } else {
-                self.locationManager.requestWhenInUseAuthorization()
+                
+                ErrorManager.showExitAlert(error: .locationServiceOff)
             }
         }
     }
