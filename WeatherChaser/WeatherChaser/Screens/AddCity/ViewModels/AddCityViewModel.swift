@@ -29,7 +29,7 @@ class AddCityViewModel {
             return weatherResponse
         }
         
-        LoadingManager.showLoadingIndicator()
+        LoadingManager.showLoadingIndicator(for:.fetchingWeather)
         NetworkManager.fetch(resource: weatherResource) { (result) in
             switch result {
             case .success(let weatherResponse):

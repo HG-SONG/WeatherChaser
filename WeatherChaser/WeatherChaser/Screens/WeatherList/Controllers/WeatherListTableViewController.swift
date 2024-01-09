@@ -75,7 +75,7 @@ class WeatherListTableViewController: UITableViewController {
     }
     
     private func requestUserLocation() {
-        LoadingManager.showLoadingIndicator()
+        LoadingManager.showLoadingIndicator(for: .locationService)
         self.locationManager.checkLocationAuthorization {
             self.locationManager.requestLocation { location in
                 LoadingManager.hideLoadingIndicator()
