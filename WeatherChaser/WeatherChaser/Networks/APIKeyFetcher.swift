@@ -25,7 +25,7 @@ class APIKeyFetcher {
             return apiKey
         }
         
-        LoadingManager.showLoadingIndicator()
+        LoadingManager.showLoadingIndicator(for: .fetchingAPIKey)
         NetworkManager.fetch(resource: resource) { (result) in
             switch result {
             case .success(let apiKey) :

@@ -40,7 +40,7 @@ class WeatherDetailViewModel {
             return weatherDetailResponse
         }
         
-        LoadingManager.showLoadingIndicator()
+        LoadingManager.showLoadingIndicator(for:.fetchingWeather)
         NetworkManager.fetch(resource: weatherDetailResource) { (result) in
             switch result {
             case .success(let response) :
