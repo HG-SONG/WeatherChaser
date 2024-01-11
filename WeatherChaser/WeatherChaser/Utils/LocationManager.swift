@@ -23,17 +23,28 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func checkLocationAuthorization(completion : @escaping () -> Void) {
         DispatchQueue.global().async {
             self.stateDetermineCompletionHandler = completion
+            
             if CLLocationManager.locationServicesEnabled() {
-                switch CLLocationManager.authorizationStatus() {
-                case .notDetermined:
-                    self.locationManager.requestWhenInUseAuthorization()
-                    return
-                default:
-                    self.stateDetermineCompletionHandler?()
-                    self.stateDetermineCompletionHandler = nil
+                if #available(iOS 14.0, *) {
+                    switch self.locationManager.authorizationStatus {
+                    case .notDetermined:
+                        self.locationManager.requestWhenInUseAuthorization()
+                        return
+                    default:
+                        self.stateDetermineCompletionHandler?()
+                        self.stateDetermineCompletionHandler = nil
+                    }
+                } else {
+                    switch CLLocationManager.authorizationStatus() {
+                    case .notDetermined:
+                        self.locationManager.requestWhenInUseAuthorization()
+                        return
+                    default:
+                        self.stateDetermineCompletionHandler?()
+                        self.stateDetermineCompletionHandler = nil
+                    }
                 }
             } else {
-                
                 ErrorManager.showExitAlert(error: .locationServiceOff)
             }
         }
