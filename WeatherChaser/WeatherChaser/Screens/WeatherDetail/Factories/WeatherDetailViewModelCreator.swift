@@ -16,9 +16,8 @@ class WeatherDetailViewModelCreator : WeatherDetailViewModelFactory {
             return ImageCellViewModel() 
         case 3 :
             return FiveDaysCellViewModel()
-        default :
-            return LabelCellViewModel()
+        default:
+            fatalError("Unexpected section value: \(section)")
         }
-
     }
 }

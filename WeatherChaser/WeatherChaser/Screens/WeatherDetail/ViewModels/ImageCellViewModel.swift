@@ -8,44 +8,61 @@
 import Foundation
 
 class ImageCellViewModel: WeatherDetailViewModelBySection {
-    private var title : String = ""
-    private var imageName : String = ""
+    private var title: String = ""
+    private var imageName: String = ""
     private var texts = [String]()
-    
+
     func setViewModel(with something: Any?) {
-        if let data = something as? Clouds {
-            self.texts.append(data.all.convertToCloudCover())
-            self.imageName = "cloud.jpg"
-            self.title = "Cloud cover"
-        } else if let data = something as? Wind {
-            self.texts.append(data.deg.convertToDirection())
-            self.texts.append(data.speed.formatAsTwoDecimalPlaces() + "m/sec")
-            self.imageName = "wind.jpg"
-            self.title = "Wind"
-        } else if let data = something as? SunSetAndRise {
-            self.texts.append(data.sunrise.convertToHHmm(isSunrise: true))
-            self.texts.append(data.sunset.convertToHHmm(isSunrise: false))
-            self.imageName = "sunset.jpg"
-            self.title = "Sunrise & Sunset"
-        } else if let data = something as? Rain {
-            self.texts.append("⛆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
-            self.imageName = "precipitation.png"
-            self.title = "Precipitation 1h"
-        } else if let data = something as? Snow {
-            self.texts.append("❆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
-            self.imageName = "precipitation.png"
-            self.title = "Precipitation 1h"
+        switch something {
+        case let data as Clouds:
+            self.handleClouds(data)
+        case let data as Wind:
+            self.handleWind(data)
+        case let data as SunSetAndRise:
+            self.handleSunSetAndRise(data)
+        case let data as Rain:
+            self.handleRain(data)
+        case let data as Snow:
+            self.handleSnow(data)
+        default:
+            break
         }
     }
-    
+
     func getViewModelAsString() -> [String] {
-        var array = [title,imageName]
-        
-        for item in texts {
-            array.append(item)
-        }
-        return array
+        return [title, imageName] + texts
     }
     
+    private func handleClouds(_ data: Clouds) {
+        texts.append(data.all.convertToCloudCover())
+        imageName = "cloud.jpg"
+        title = "Cloud cover"
+    }
+
+    private func handleWind(_ data: Wind) {
+        texts.append(data.deg.convertToDirection())
+        texts.append(data.speed.formatAsTwoDecimalPlaces() + "m/sec")
+        imageName = "wind.jpg"
+        title = "Wind"
+    }
+
+    private func handleSunSetAndRise(_ data: SunSetAndRise) {
+        texts.append(data.sunrise.convertToHHmm(isSunrise: true))
+        texts.append(data.sunset.convertToHHmm(isSunrise: false))
+        imageName = "sunset.jpg"
+        title = "Sunrise & Sunset"
+    }
+
+    private func handleRain(_ data: Rain) {
+        texts.append("⛆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
+        imageName = "precipitation.png"
+        title = "Precipitation 1h"
+    }
+
+    private func handleSnow(_ data: Snow) {
+        texts.append("❆ " + data.amountFor1h!.formatAsTwoDecimalPlaces() + "mm")
+        imageName = "precipitation.png"
+        title = "Precipitation 1h"
+    }
 }
 

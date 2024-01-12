@@ -21,6 +21,7 @@ class WeatherDetailViewModel {
     }
     
     func setupUpperSectionViewModel(_ cellSummary : WeatherCellViewModel) {
+        
         let cityName = cellSummary.city
         let currentTemperature = cellSummary.temperature
         let description = cellSummary.weather.weather.first!.description
@@ -41,6 +42,7 @@ class WeatherDetailViewModel {
         }
         
         LoadingManager.showLoadingIndicator(for:.fetchingWeather)
+        
         NetworkManager.fetch(resource: weatherDetailResource) { (result) in
             switch result {
             case .success(let response) :
@@ -95,41 +97,24 @@ class WeatherDetailViewModel {
     }
     
     private func setupImageCellViewModel(_ cellSummary : WeatherCellViewModel) {
-        let wind = cellSummary.weather.wind
-        let clouds = cellSummary.weather.clouds
-        let sunriseAndSet = cellSummary.weather.sys
-        var rain : Rain
-        var snow : Snow
-        
-        if cellSummary.weather.rain == nil {
-            rain = Rain(amountFor1h: .zero, amountFor3h: .zero)
-        } else {
-            rain = cellSummary.weather.rain!
-        }
-        
-        if cellSummary.weather.snow == nil {
-            snow = Snow(amountFor1h: .zero, amountFor3h: .zero)
-        } else {
-            snow = cellSummary.weather.snow!
-        }
+        let rain = cellSummary.weather.rain ?? Rain(amountFor1h: .zero, amountFor3h: .zero)
+        let snow = cellSummary.weather.snow ?? Snow(amountFor1h: .zero, amountFor3h: .zero)
         
         let rainCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
         rainCellViewModel.setViewModel(with: rain)
         rainCellViewModel.setViewModel(with: snow)
         self.sectionTwoViewModel.append(rainCellViewModel)
         
-        let cloudsCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
-        cloudsCellViewModel.setViewModel(with: clouds)
-        self.sectionTwoViewModel.append(cloudsCellViewModel)
-        
-        let windCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
-        windCellViewModel.setViewModel(with: wind)
-        self.sectionTwoViewModel.append(windCellViewModel)
-        
-        let sunCellViewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
-        sunCellViewModel.setViewModel(with: sunriseAndSet)
-        self.sectionTwoViewModel.append(sunCellViewModel)
-        
+        setupCellViewModel(for: cellSummary.weather.clouds, section: 2)
+        setupCellViewModel(for: cellSummary.weather.wind, section: 2)
+        setupCellViewModel(for: cellSummary.weather.sys, section: 2)
+    }
+    
+    private func setupCellViewModel<T: Codable>(for data: T, section: Int) {
+        var viewModel: WeatherDetailViewModelBySection
+        viewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: section)
+        viewModel.setViewModel(with: data)
+        self.sectionTwoViewModel.append(viewModel)
     }
 }
 
