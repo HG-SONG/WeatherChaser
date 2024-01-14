@@ -8,28 +8,157 @@
 import XCTest
 
 final class WeatherListViewModelTests: XCTestCase {
-
+    
+    private var weatherListViewModel : WeatherListViewModel!
+    private var weatherCellViewModel : WeatherCellViewModel!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        self.weatherListViewModel = WeatherListViewModel()
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.weatherListViewModel = nil
+        self.weatherCellViewModel = nil
+        try super.tearDownWithError()
+    }
+    
+    func testNumberOfRows_zero() {
+        let numberOfRows = weatherListViewModel.numberOfRows(0)
+        XCTAssertEqual(numberOfRows, 0)
+    }
+    
+    func testNumberOfRows_one() {
+        appendMock()
+        let numberOfRows = weatherListViewModel.numberOfRows(0)
+        XCTAssertEqual(numberOfRows, 1)
+    }
+    
+    func testNumberOfRows_Two() {
+        appendMock()
+        appendMock()
+        let numberOfRows = weatherListViewModel.numberOfRows(0)
+        XCTAssertEqual(numberOfRows, 2)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testModelAt() {
+        appendMock()
+        let retrievedModel = weatherListViewModel.modelAt(0)
+        XCTAssertTrue(retrievedModel == self.weatherCellViewModel)
     }
+    
+    func testAddWeatherCellInViewModel() {
+        let initialCount = weatherListViewModel.numberOfRows(0)
+        let weatherCellViewModel = WeatherCellViewModel(weather: WeatherResponse(contents: 0))
+        
+        weatherListViewModel.addWeatherCellInViewModel(weatherCellViewModel)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+        let finalCount = weatherListViewModel.numberOfRows(0)
+        XCTAssertEqual(finalCount, initialCount + 1)
     }
+    
+    func testReversed() {
+        let weatherCellViewModel0 = WeatherCellViewModel(weather: WeatherResponse(contents: 0))
+        let weatherCellViewModel1 = WeatherCellViewModel(weather: WeatherResponse(contents: 1))
+        
+        weatherListViewModel.addWeatherCellInViewModel(weatherCellViewModel0)
+        weatherListViewModel.addWeatherCellInViewModel(weatherCellViewModel1)
 
+        let reversedViewModels = weatherListViewModel.reversed()
+
+        XCTAssertEqual(reversedViewModels, [weatherCellViewModel1, weatherCellViewModel0])
+    }
+    
+    func testUpdateUnit_celsius_to_celsius() {
+        appendMock()
+        self.weatherListViewModel.lastSelectedUnit = Unit.celsius.rawValue
+        
+        UserDefaults.standard.setValue(Unit.celsius.rawValue, forKey: "selected")
+        
+        let initialTemperature = weatherCellViewModel.temperature
+
+        weatherListViewModel.updateUnit()
+
+        XCTAssertEqual(initialTemperature, weatherCellViewModel.temperature)
+    }
+    
+    func testUpdateUnit_fahrenheit_to_fahrenheit() {
+        appendMock()
+        self.weatherListViewModel.lastSelectedUnit = Unit.fahrenheit.rawValue
+        
+        UserDefaults.standard.setValue(Unit.fahrenheit.rawValue, forKey: "selected")
+        
+        let initialTemperature = weatherCellViewModel.temperature
+
+        weatherListViewModel.updateUnit()
+
+        XCTAssertEqual(initialTemperature, weatherCellViewModel.temperature)
+    }
+    
+    func testUpdateUnit_fahrenheit_to_celsius() {
+        appendMock()
+        self.weatherListViewModel.lastSelectedUnit = Unit.fahrenheit.rawValue
+        
+        UserDefaults.standard.setValue(Unit.celsius.rawValue, forKey: "selected")
+        
+        let initialTemperature = weatherCellViewModel.temperature
+
+        let predictedResult = (Double(initialTemperature)! - 32.0) * 5/9
+        
+        weatherListViewModel.updateUnit()
+
+        XCTAssertEqual(predictedResult.formatAsDegree(), weatherCellViewModel.temperature)
+    }
+    
+    func testUpdateUnit_celsius_to_fahrenheit() {
+        appendMock()
+        self.weatherListViewModel.lastSelectedUnit = Unit.celsius.rawValue
+        
+        UserDefaults.standard.setValue(Unit.fahrenheit.rawValue, forKey: "selected")
+        
+        let initialTemperature = weatherCellViewModel.temperature
+
+        let predictedResult = 9/5 * Double(initialTemperature)! + 32.0
+        
+        weatherListViewModel.updateUnit()
+
+        XCTAssertEqual(predictedResult.formatAsDegree(), weatherCellViewModel.temperature)
+    }
+    
+    func appendMock() {
+        let mockWeatherResponse = WeatherResponse(contents: 0)
+        self.weatherCellViewModel = WeatherCellViewModel(weather: mockWeatherResponse)
+        
+        self.weatherListViewModel.addWeatherCellInViewModel(weatherCellViewModel)
+    }
+}
+
+extension WeatherCellViewModel : Equatable {
+    static func == (lhs: WeatherCellViewModel, rhs: WeatherCellViewModel) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+}
+
+class WeatherResponse {
+    let contents : Double
+    
+    init(contents: Double) {
+        self.contents = contents
+    }
+}
+
+class WeatherCellViewModel {
+    let weather: WeatherResponse
+    var temperature: String
+    var feelsLikeTemperature: String
+    var maxTemperature: String
+    var minTemperature: String
+    
+    init(weather: WeatherResponse) {
+        self.weather = weather
+        self.temperature = String(weather.contents)
+        self.feelsLikeTemperature = String(weather.contents + 5.00)
+        self.maxTemperature = String(weather.contents + 10.00)
+        self.minTemperature = String(weather.contents - 10.00)
+    }
 }
