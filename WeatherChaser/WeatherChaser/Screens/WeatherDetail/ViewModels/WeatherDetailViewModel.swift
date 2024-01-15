@@ -105,14 +105,14 @@ class WeatherDetailViewModel {
         rainCellViewModel.setViewModel(with: snow)
         self.sectionTwoViewModel.append(rainCellViewModel)
         
-        setupCellViewModel(for: cellSummary.weather.clouds, section: 2)
-        setupCellViewModel(for: cellSummary.weather.wind, section: 2)
-        setupCellViewModel(for: cellSummary.weather.sys, section: 2)
+        setupCellViewModelAtSectionTwo(for: cellSummary.weather.clouds)
+        setupCellViewModelAtSectionTwo(for: cellSummary.weather.wind)
+        setupCellViewModelAtSectionTwo(for: cellSummary.weather.sys)
     }
     
-    private func setupCellViewModel<T: Codable>(for data: T, section: Int) {
+    private func setupCellViewModelAtSectionTwo<T: Codable>(for data: T) {
         var viewModel: WeatherDetailViewModelBySection
-        viewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: section)
+        viewModel = WeatherDetailViewModelCreator.makeCellViewModel(at: 2)
         viewModel.setViewModel(with: data)
         self.sectionTwoViewModel.append(viewModel)
     }
